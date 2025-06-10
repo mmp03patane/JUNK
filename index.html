@@ -18,7 +18,7 @@
       color: #222;
       line-height: 1.6;
       font-size: 1.15rem;
-      text-align: center;
+      text-align: center; /* Keeping text-align from the first HTML's body */
     }
 
     /* Header Styles */
@@ -37,7 +37,7 @@
 
     /* Desktop Navigation */
     nav.desktop-nav {
-      display: block; /* Default to block for desktop */
+      display: block;
     }
     nav.desktop-nav a {
       color: #fff;
@@ -49,7 +49,7 @@
 
     /* Hamburger Menu (Hidden by default on desktop) */
     .hamburger-menu {
-      display: none; /* Hidden on desktop */
+      display: none;
       width: 30px;
       height: 21px;
       cursor: pointer;
@@ -65,9 +65,9 @@
 
     /* Mobile Navigation (Hidden by default, shown with JS) */
     nav.mobile-nav {
-      display: none; /* Hidden by default */
+      display: none;
       position: absolute;
-      top: 100%; /* Positions it right below the header */
+      top: 100%;
       left: 0;
       width: 100%;
       background-color: #000;
@@ -75,7 +75,7 @@
       text-align: center;
     }
     nav.mobile-nav.open {
-      display: block; /* Toggled by JavaScript */
+      display: block;
     }
     nav.mobile-nav a {
       color: #fff;
@@ -93,8 +93,11 @@
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      /* Keeping slideUp animation from first HTML for the hero container */
+      animation: slideUp 0.8s ease forwards;
     }
 
+    /* --- Styles for the Scrolling Text Hero Section (from second HTML) --- */
     .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
@@ -116,14 +119,13 @@
       gap: 0.5rem;
       font-size: 2.5rem;
       line-height: 1.2;
-      white-space: nowrap; /* Keeps "WITH" and scrolling text on one line */
+      white-space: nowrap;
       margin-top: 0.5rem;
     }
     .desktop-line2 span:first-child {
-      flex-shrink: 0; /* Prevents "WITH" from shrinking */
+      flex-shrink: 0;
     }
 
-    /* --- DESKTOP SCROLLING TEXT FIXES --- */
     .scroll-container {
       position: relative;
       overflow: hidden;
@@ -157,12 +159,13 @@
       0% { transform: translateY(0); }
       100% { transform: translateY(-50%); /* Scrolls up by half the total scroll-text height for seamless loop */ }
     }
-    /* --- END DESKTOP SCROLLING TEXT FIXES --- */
 
     /* Hide mobile specific elements by default on desktop */
     .mobile-line1, .mobile-line2, .mobile-scroll {
       display: none;
     }
+    /* --- End Styles for the Scrolling Text Hero Section --- */
+
 
     /* Hero Button Styles */
     .hero-button {
@@ -177,12 +180,14 @@
       cursor: pointer;
       margin-top: 1.5rem;
       transition: background-color 0.3s ease;
+      /* Keeping slideInLeft animation from first HTML for the button */
+      animation: slideInLeft 1s ease forwards;
     }
     .hero-button:hover {
       background-color: #5fae60;
     }
 
-    /* Panel and CTA Section Styles */
+    /* Panel and CTA Section Styles (from first HTML) */
     .panel, .cta {
       max-width: 800px;
       margin: 3rem auto;
@@ -191,6 +196,24 @@
       box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
       border-radius: 12px;
       text-align: center;
+      /* Keeping slideUp animation from first HTML for these sections */
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    /* H2 styles for Panel and CTA (from first HTML, adjusted to match new style for scrolling H2) */
+    .panel h2, .cta h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem; /* Consistent with new hero scrolling text size */
+      color: #000;
+      margin-bottom: 1rem;
+      animation: slideInLeft 1s ease forwards; /* Keeping animation */
+    }
+
+    /* Paragraph and List Item styles (from first HTML) */
+    .panel p, .cta p, .cta ul li {
+      font-size: 1.3rem; /* Original size from first HTML */
+      color: #000;
+      animation: slideInLeft 1s ease forwards; /* Keeping animation */
     }
 
     .profile-photo {
@@ -212,7 +235,18 @@
       margin-right: 5px;
     }
 
+    /* Keyframe Animations (from first HTML) */
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
     /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
+    /* Standardizing to 767px from 768px for consistency with scrolling text's media query */
     @media (max-width: 767px) {
       /* Adjust general section widths and padding for mobile */
       .hero,
@@ -282,10 +316,18 @@
 
       /* Show hamburger menu and hide desktop nav on mobile */
       .hamburger-menu {
-        display: flex; /* Show hamburger */
+        display: flex;
       }
       nav.desktop-nav {
-        display: none; /* Hide desktop nav */
+        display: none;
+      }
+
+      /* Responsive font sizes for h2, p, li on mobile (from first HTML) */
+      .hero h1, .panel h2, .cta h2 {
+        font-size: 2.2rem;
+      }
+      .hero .subtext, .panel p, .cta p, .cta ul li {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -344,7 +386,6 @@
         </div>
       </div>
     </div>
-
     <button class="hero-button">LET'S CHAT</button>
   </section>
 
