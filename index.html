@@ -105,11 +105,11 @@
       margin-bottom: 1rem;
     }
 
-    .hero p {
+    .hero-location-text { /* New style for "Servicing all metro Melbourne areas." */
       font-family: 'Roboto', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.5rem; /* Larger font size */
       margin-bottom: 1rem;
-      max-width: 600px; /* Limit text width for readability */
+      max-width: 600px;
     }
 
     .hero ul {
@@ -117,7 +117,7 @@
       padding: 0;
       margin-bottom: 1.5rem;
       font-family: 'Roboto', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.35rem; /* Larger font size for list items */
       text-align: left; /* Align list items to the left */
     }
 
@@ -136,13 +136,13 @@
 
     .hero-cta-text {
       font-family: 'Roboto', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.6rem; /* Larger font size for CTA text */
       margin-bottom: 1rem;
       font-weight: bold;
     }
 
     .hero-button {
-      background-color: #78C976; /* Green button */
+      background-color: #198754; /* Green button */
       color: #fff;
       border: none;
       padding: 1rem 2.5rem;
@@ -182,15 +182,20 @@
         font-size: 2.2rem; /* Smaller font for mobile heading */
       }
 
-      .hero p, .hero ul, .hero ul li, .hero-cta-text {
-        font-size: 1rem; /* Smaller font for mobile text */
+      .hero-location-text {
+        font-size: 1.2rem; /* Adjusted font size for mobile */
       }
 
       .hero ul {
+        font-size: 1.1rem; /* Adjusted font size for mobile list items */
         width: 100%; /* Full width for list on mobile */
         max-width: 300px; /* Max width for readability */
         margin-left: auto;
-        margin-right: auto;
+        margin-right: auto; /* Center the list block on mobile */
+      }
+
+      .hero-cta-text {
+        font-size: 1.3rem; /* Adjusted font size for mobile CTA text */
       }
     }
   </style>
@@ -215,11 +220,11 @@
 
   <section class="hero">
     <h1>LOOKING FOR NO FUSS WASTE REMOVAL? <br> BOOK YOUR FREE QUOTE TODAY.</h1>
-    <p>Servicing all metro Melbourne areas.</p>
+    <p class="hero-location-text">Servicing all metro Melbourne areas.</p>
     <ul>
-      <li> Fast and Professional</li>
-      <li> Proper Disposal</li>
-      <li> No Hidden Fees</li>
+      <li>Fast and Professional</li>
+      <li>Proper Disposal</li>
+      <li>No Hidden Fees</li>
     </ul>
     <p class="hero-cta-text">Get your free quote today:</p>
     <button class="hero-button">GET QUOTE</button>
@@ -232,3 +237,4 @@
   </script>
 </body>
 </html>
+
