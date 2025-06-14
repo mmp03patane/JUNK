@@ -85,6 +85,81 @@
       font-family: 'Roboto', sans-serif;
     }
 
+    /* Hero Section Styles */
+    .hero {
+      background-color: #222; /* Dark background for the hero section */
+      color: #fff;
+      padding: 4rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 3rem; /* Larger font for desktop */
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      max-width: 600px; /* Limit text width for readability */
+    }
+
+    .hero ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.25rem;
+      text-align: left; /* Align list items to the left */
+    }
+
+    .hero ul li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem; /* Space for the checkmark */
+      position: relative;
+    }
+
+    .hero ul li::before {
+      content: '✅'; /* Checkmark icon */
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+    }
+
+    .hero-cta-text {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .hero-button {
+      background-color: #78C976; /* Green button */
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .hero-button:hover {
+      background-color: #5fae60; /* Darker green on hover */
+    }
+
+
     /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
     @media (max-width: 767px) {
       /* Show hamburger menu and hide desktop nav on mobile */
@@ -93,7 +168,29 @@
       }
       nav.desktop-nav {
         display: none; /* Hide desktop nav */
+      }
+      /* Apply smaller header padding only on mobile */
+      header {
+        padding: 0.8rem 2rem; /* Reduced top and bottom padding for a smaller mobile header */
+      }
 
+      .hero {
+        padding: 3rem 1rem; /* Adjust padding for mobile hero */
+      }
+
+      .hero h1 {
+        font-size: 2.2rem; /* Smaller font for mobile heading */
+      }
+
+      .hero p, .hero ul, .hero ul li, .hero-cta-text {
+        font-size: 1rem; /* Smaller font for mobile text */
+      }
+
+      .hero ul {
+        width: 100%; /* Full width for list on mobile */
+        max-width: 300px; /* Max width for readability */
+        margin-left: auto;
+        margin-right: auto;
       }
     }
   </style>
@@ -115,6 +212,18 @@
       <a href="#">Contact</a>
     </nav>
   </header>
+
+  <section class="hero">
+    <h1>LOOKING FOR NO FUSS WASTE REMOVAL? <br> BOOK YOUR FREE QUOTE TODAY.</h1>
+    <p>Servicing all metro Melbourne areas.</p>
+    <ul>
+      <li> Fast and Professional</li>
+      <li> Proper Disposal</li>
+      <li> No Hidden Fees</li>
+    </ul>
+    <p class="hero-cta-text">Get your free quote today:</p>
+    <button class="hero-button">GET QUOTE</button>
+  </section>
 
   <script>
     function toggleMobileMenu() {
