@@ -25,14 +25,14 @@
     header {
       background-color: #198754; /* Changed header color to #198754 */
       color: #fff;
-      padding: 1rem 2rem;
+      padding: 1rem 2rem; /* Original padding for desktop */
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: relative;
     }
     .logo img {
-      height: 40px;
+      height: 50px; /* Increased the height of the logo image */
     }
 
     /* Desktop Navigation */
@@ -93,6 +93,10 @@
       }
       nav.desktop-nav {
         display: none; /* Hide desktop nav */
+      }
+      /* Apply smaller header padding only on mobile */
+      header {
+        padding: 1.1rem 2rem; /* Reduced top and bottom padding for a smaller mobile header */
       }
     }
   </style>
