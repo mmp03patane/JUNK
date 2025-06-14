@@ -132,6 +132,7 @@
       position: absolute;
       left: 0;
       top: 0.1rem;
+      margin-right: 0.5rem; /* Added space to the right of the checkmark */
     }
 
     .hero-cta-text {
@@ -157,6 +158,56 @@
 
     .hero-button:hover {
       background-color: #5fae60; /* Darker green on hover */
+    }
+
+    /* Rubbish Types Section Styles */
+    .rubbish-types-section {
+      background-color: #efe2ae; /* Background color for the section */
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .rubbish-types-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #000000; /* Black heading color */
+      margin-bottom: 2.5rem;
+    }
+
+    .panels-container {
+      display: flex;
+      flex-wrap: wrap; /* Allow panels to wrap to next line on smaller screens */
+      justify-content: center; /* Center panels horizontally */
+      gap: 2rem; /* Space between panels */
+      max-width: 1200px; /* Limit container width */
+      margin: 0 auto; /* Center the container */
+    }
+
+    .rubbish-panel {
+      background-color: #ffffff; /* Panel background */
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Floating panel shadow */
+      flex: 1; /* Allow panels to grow and shrink */
+      min-width: 280px; /* Minimum width for panels */
+      max-width: 350px; /* Maximum width for panels */
+      text-align: left; /* Text inside panel is left-aligned */
+    }
+
+    .rubbish-panel h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem; /* Same size as paragraph font (body font-size) */
+      color: #333; /* A slightly darker color for heading inside panel */
+      margin-bottom: 1rem;
+      text-align: center; /* Center align H3 inside panel */
+    }
+
+    .rubbish-panel p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem; /* Adjust paragraph font size inside panel if needed */
+      color: #555;
+      line-height: 1.5;
     }
 
 
@@ -197,6 +248,28 @@
       .hero-cta-text {
         font-size: 1.3rem; /* Adjusted font size for mobile CTA text */
       }
+
+      /* Rubbish Types Section Mobile Styles */
+      .rubbish-types-section h2 {
+        font-size: 1.8rem; /* Smaller H2 for mobile */
+        margin-bottom: 1.5rem;
+      }
+
+      .rubbish-panel {
+        padding: 1.5rem;
+        min-width: unset; /* Remove min-width to allow better shrinking on very small screens */
+        max-width: 90%; /* Take up more width on small mobile screens */
+        margin-left: auto; /* Center individual panels */
+        margin-right: auto; /* Center individual panels */
+      }
+
+      .rubbish-panel h3 {
+        font-size: 1rem; /* Smaller H3 for mobile, matching mobile paragraph size */
+      }
+
+      .rubbish-panel p {
+        font-size: 0.9rem; /* Smaller paragraph text for mobile */
+      }
     }
   </style>
 </head>
@@ -222,12 +295,30 @@
     <h1>LOOKING FOR NO FUSS WASTE REMOVAL? <br> BOOK YOUR FREE QUOTE TODAY.</h1>
     <p class="hero-location-text">Servicing all metro Melbourne areas.</p>
     <ul>
-      <li>Fast and Professional</li>
-      <li>Proper Disposal</li>
-      <li>No Hidden Fees</li>
+      <li> Fast and Professional</li>
+      <li> Proper Disposal</li>
+      <li> No Hidden Fees</li>
     </ul>
     <p class="hero-cta-text">Get your free quote today:</p>
     <button class="hero-button">GET QUOTE</button>
+  </section>
+
+  <section class="rubbish-types-section">
+    <h2>WHAT TYPE OF RUBBISH DO YOU HAVE?</h2>
+    <div class="panels-container">
+      <div class="rubbish-panel">
+        <h3>General Waste</h3>
+        <p>This includes common household and office waste, such as packaging, old furniture, and general junk. We ensure responsible disposal, sorting recyclables and non-recyclables.</p>
+      </div>
+      <div class="rubbish-panel">
+        <h3>Green Waste</h3>
+        <p>Perfect for garden clear-outs! This covers organic materials like branches, leaves, grass clippings, and small stumps. All green waste is taken to a composting facility.</p>
+      </div>
+      <div class="rubbish-panel">
+        <h3>Construction & Demolition</h3>
+        <p>From renovation debris to building site waste, we handle concrete, bricks, timber, metals, and more. Our team is equipped for heavy lifting and efficient site clearance.</p>
+      </div>
+    </div>
   </section>
 
   <script>
@@ -237,4 +328,3 @@
   </script>
 </body>
 </html>
-
