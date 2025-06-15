@@ -193,11 +193,14 @@
       min-width: 280px; /* Minimum width for panels */
       max-width: 350px; /* Maximum width for panels */
       text-align: left; /* Text inside panel is left-aligned */
+      display: flex; /* Use flexbox for internal layout */
+      flex-direction: column; /* Stack content vertically */
+      justify-content: space-between; /* Push button to the bottom */
     }
 
     .rubbish-panel h3 {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.25rem; /* Same size as paragraph font (body font-size) */
+      font-size: 1.5rem; /* Larger font size for panel headings */
       color: #333; /* A slightly darker color for heading inside panel */
       margin-bottom: 1rem;
       text-align: center; /* Center align H3 inside panel */
@@ -205,9 +208,32 @@
 
     .rubbish-panel p {
       font-family: 'Nunito Sans', sans-serif;
-      font-size: 1rem; /* Adjust paragraph font size inside panel if needed */
+      font-size: 1.1rem; /* Larger paragraph font size inside panel */
       color: #555;
       line-height: 1.5;
+      margin-bottom: 1.5rem; /* Space before the button */
+      flex-grow: 1; /* Allow paragraph to take up available space */
+    }
+
+    .panel-button {
+      background-color: #198754; /* Green button */
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem; /* Slightly smaller font size for panel buttons */
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      display: block; /* Make button a block element */
+      width: fit-content; /* Fit content width */
+      margin: 0 auto; /* Center the button */
+    }
+
+    .panel-button:hover {
+      background-color: #5fae60; /* Darker green on hover */
     }
 
 
@@ -264,11 +290,16 @@
       }
 
       .rubbish-panel h3 {
-        font-size: 1rem; /* Smaller H3 for mobile, matching mobile paragraph size */
+        font-size: 1.3rem; /* Slightly larger H3 for mobile panels */
       }
 
       .rubbish-panel p {
-        font-size: 0.9rem; /* Smaller paragraph text for mobile */
+        font-size: 1rem; /* Slightly larger paragraph text for mobile panels */
+      }
+
+      .panel-button {
+        font-size: 0.9rem; /* Smaller font for panel buttons on mobile */
+        padding: 0.7rem 1.8rem;
       }
     }
   </style>
@@ -276,7 +307,7 @@
 <body>
   <header>
     <a href="index.html" class="logo">
-      <img src="https://github.com/mmp03patane/JUNK/blob/main/Junk.png?raw=true" />
+      <img src="https://github.com/mmp03patane/JUNK/blob/main/Junk.png?raw=true" alt="Creative365 Logo" />
     </a>
     <div class="hamburger-menu" onclick="toggleMobileMenu()">
       <div class="bar"></div>
@@ -309,14 +340,17 @@
       <div class="rubbish-panel">
         <h3>General Waste</h3>
         <p>This includes common household and office waste, such as packaging, old furniture, and general junk. We ensure responsible disposal, sorting recyclables and non-recyclables.</p>
+        <button class="panel-button">GET QUOTE</button>
       </div>
       <div class="rubbish-panel">
         <h3>Green Waste</h3>
         <p>Perfect for garden clear-outs! This covers organic materials like branches, leaves, grass clippings, and small stumps. All green waste is taken to a composting facility.</p>
+        <button class="panel-button">GET QUOTE</button>
       </div>
       <div class="rubbish-panel">
         <h3>Construction & Demolition</h3>
         <p>From renovation debris to building site waste, we handle concrete, bricks, timber, metals, and more. Our team is equipped for heavy lifting and efficient site clearance.</p>
+        <button class="panel-button">GET QUOTE</button>
       </div>
     </div>
   </section>
