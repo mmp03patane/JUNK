@@ -236,6 +236,221 @@
       background-color: #5fae60; /* Darker green on hover */
     }
 
+    /* FAQ Section Styles */
+    .faq-section {
+      background-color: #ffffff; /* White background for FAQ */
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .faq-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #000000;
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      background-color: #f0f0f0;
+      padding: 1rem 1.5rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background-color: #e0e0e0;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 1rem 1.5rem;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      background-color: #fff;
+      border-top: 1px solid #eee;
+      display: none; /* Hidden by default */
+      overflow: hidden;
+    }
+
+    /* Testimonials Section Styles */
+    .testimonials-section {
+      background-color: #f7f7f7; /* Light grey background */
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .testimonials-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #000000;
+      margin-bottom: 2.5rem;
+    }
+
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      min-width: 280px;
+      max-width: 380px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '“';
+      font-family: serif;
+      font-size: 4em;
+      color: #efe2ae; /* Matching the rubbish section background for a subtle touch */
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      padding-top: 20px; /* Space for the quote mark */
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: #198754; /* Green accent for the author name */
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      text-align: right;
+    }
+
+    /* Quote Form Section Styles */
+    .quote-form-section {
+      background-color: #198754; /* Green background */
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .quote-form-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #ffffff; /* White heading */
+      margin-bottom: 2.5rem;
+    }
+
+    .quote-form-panel {
+      background-color: #ffffff; /* White panel */
+      padding: 3rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      color: #222; /* Black text */
+    }
+
+    .quote-form-panel label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .quote-form-panel input[type="text"],
+    .quote-form-panel input[type="email"],
+    .quote-form-panel input[type="tel"],
+    .quote-form-panel textarea,
+    .quote-form-panel select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      color: #222;
+    }
+
+    .quote-form-panel textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .quote-form-panel button {
+      background-color: #198754;
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .quote-form-panel button:hover {
+      background-color: #5fae60;
+    }
 
     /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
     @media (max-width: 767px) {
@@ -301,6 +516,69 @@
         font-size: 0.9rem; /* Smaller font for panel buttons on mobile */
         padding: 0.7rem 1.8rem;
       }
+
+      /* FAQ Section Mobile Styles */
+      .faq-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .faq-question {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
+
+      .faq-answer {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+      }
+
+      /* Testimonials Section Mobile Styles */
+      .testimonials-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .testimonial-card {
+        padding: 1.5rem;
+        min-width: unset;
+        max-width: 90%;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+      }
+
+      .testimonial-author {
+        font-size: 0.9rem;
+      }
+
+      /* Quote Form Section Mobile Styles */
+      .quote-form-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .quote-form-panel {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+      }
+
+      .quote-form-panel label {
+        font-size: 0.9rem;
+      }
+
+      .quote-form-panel input[type="text"],
+      .quote-form-panel input[type="email"],
+      .quote-form-panel input[type="tel"],
+      .quote-form-panel textarea,
+      .quote-form-panel select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .quote-form-panel button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -355,10 +633,106 @@
     </div>
   </section>
 
+  <section class="faq-section">
+    <h2>FREQUENTLY ASKED QUESTIONS</h2>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">What areas do you service?</div>
+        <div class="faq-answer">We proudly service all metro Melbourne areas. If you're unsure, please contact us with your location, and we'll confirm.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do I get a free quote?</div>
+        <div class="faq-answer">You can get a free, no-obligation quote by filling out our online form below, or by giving us a call. We'll ask a few questions about the type and volume of rubbish to provide an accurate estimate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What types of rubbish can you remove?</div>
+        <div class="faq-answer">We remove general waste, green waste, and construction & demolition debris. For specific items or hazardous materials, please contact us directly to discuss.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How quickly can you remove my rubbish?</div>
+        <div class="faq-answer">We aim for fast and efficient service. Depending on our schedule and your location, we can often arrange same-day or next-day rubbish removal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need to be present during the rubbish removal?</div>
+        <div class="faq-answer">While it's not strictly necessary, it's often helpful if you're present to guide our team, especially for specific items or access instructions. If you can't be there, clear instructions beforehand are appreciated.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <h2>WHAT OUR CUSTOMERS SAY</h2>
+    <div class="testimonials-container">
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Absolutely brilliant service! They were quick, professional, and left the area spotless. Highly recommend for any junk removal needs in Melbourne."</p>
+        <p class="testimonial-author">- Sarah L.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Needed urgent green waste removal after a storm, and these guys delivered! Friendly, efficient, and great value. Couldn't be happier."</p>
+        <p class="testimonial-author">- David R.</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Seamless experience from quote to collection. They handled all the construction debris from our reno with ease. Professional and reliable."</p>
+        <p class="testimonial-author">- Emily P.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-form-section">
+    <h2>GET YOUR FREE QUOTE TODAY</h2>
+    <div class="quote-form-panel">
+      <form action="#" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="rubbish-type">Type of Rubbish:</label>
+        <select id="rubbish-type" name="rubbish_type" required>
+          <option value="">-- Please select --</option>
+          <option value="general">General Waste</option>
+          <option value="green">Green Waste</option>
+          <option value="construction">Construction & Demolition</option>
+          <option value="other">Other (please specify below)</option>
+        </select>
+
+        <label for="message">Details of Rubbish / Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">GET MY FREE QUOTE</button>
+      </form>
+    </div>
+  </section>
+
   <script>
     function toggleMobileMenu() {
       document.getElementById("mobileNav").classList.toggle("open");
     }
+
+    // FAQ Toggle Functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          // Toggle active class on question for styling (e.g., changing + to -)
+          question.classList.toggle('active');
+
+          if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+          } else {
+            answer.style.display = 'block';
+          }
+        });
+      });
+    });
   </script>
 </body>
 </html>
