@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creative365 - Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    /* Universal Box-sizing and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: #f7f7f7;
+      color: #222;
+      line-height: 1.6;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #198754; /* Green header */
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .logo img {
+      height: 50px;
+    }
+
+    /* Desktop Navigation (still present but won't navigate on this standalone page) */
+    nav.desktop-nav {
+      display: block;
+    }
+    nav.desktop-nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 2rem;
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+    }
+
+    /* Hamburger Menu (Hidden by default on desktop) */
+    .hamburger-menu {
+      display: none; /* Hidden on desktop */
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 20;
+    }
+    .hamburger-menu .bar {
+      height: 3px;
+      background-color: #fff;
+      width: 100%;
+    }
+
+    /* Mobile Navigation (Hidden by default, shown with JS) */
+    nav.mobile-nav {
+      display: none; /* Hidden by default */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #198754;
+      z-index: 15;
+      text-align: center;
+    }
+    nav.mobile-nav.open {
+      display: block; /* Toggled by JavaScript */
+    }
+    nav.mobile-nav a {
+      color: #fff;
+      display: block;
+      padding: 1rem;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Contact Page Specific Content Styles */
+    .contact-page-content {
+      background-color: #198754; /* Green background */
+      padding: 4rem 1rem;
+      text-align: center;
+      color: #fff; /* White text for headers/subheadings */
+      min-height: calc(100vh - 70px); /* Adjust based on header height to fill screen */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-page-content h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-page-content p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 2.5rem;
+      max-width: 800px; /* Limit width of subheading */
+    }
+
+    /* Quote Form Panel Styles (reused for contact form) */
+    .quote-form-panel {
+      background-color: #ffffff; /* White panel */
+      padding: 3rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%; /* Ensure it takes full width within max-width */
+      margin: 0 auto; /* Center the form */
+      text-align: left;
+      color: #222; /* Black text */
+    }
+
+    .quote-form-panel label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .quote-form-panel input[type="text"],
+    .quote-form-panel input[type="email"],
+    .quote-form-panel input[type="tel"],
+    .quote-form-panel textarea,
+    .quote-form-panel select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1rem;
+      color: #222;
+    }
+
+    .quote-form-panel textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .quote-form-panel button {
+      background-color: #198754;
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .quote-form-panel button:hover {
+      background-color: #5fae60;
+    }
+
+    /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
+    @media (max-width: 767px) {
+      header {
+        padding: 0.8rem 1.5rem; /* Adjusted padding for mobile header */
+      }
+      .hamburger-menu {
+        display: flex; /* Show hamburger */
+      }
+      nav.desktop-nav {
+        display: none; /* Hide desktop nav */
+      }
+      .contact-page-content {
+        padding: 3rem 1rem;
+        min-height: calc(100vh - 60px); /* Adjust for smaller header height on mobile */
+      }
+      .contact-page-content h1 {
+        font-size: 2.2rem;
+      }
+      .contact-page-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .quote-form-panel {
+        padding: 2rem 1.5rem;
+      }
+      .quote-form-panel label {
+        font-size: 0.9rem;
+      }
+      .quote-form-panel input[type="text"],
+      .quote-form-panel input[type="email"],
+      .quote-form-panel input[type="tel"],
+      .quote-form-panel textarea,
+      .quote-form-panel select {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+      .quote-form-panel button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="https://github.com/mmp03patane/JUNK/blob/main/Junk.png?raw=true" alt="Creative365 Logo" />
+    </a>
+    <div class="hamburger-menu" onclick="toggleMobileMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="desktop-nav">
+      <a href="contact.html">Contact</a>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="contact-page-content">
+    <h1>WE ARE AVAILABLE IN YOUR AREA</h1>
+    <p>Get your FREE quote to book your next rubbish removal</p>
+    <div class="quote-form-panel">
+      <form action="#" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="rubbish-type">Type of Rubbish:</label>
+        <select id="rubbish-type" name="rubbish_type" required>
+          <option value="">-- Please select --</option>
+          <option value="general">General Waste</option>
+          <option value="green">Green Waste</option>
+          <option value="construction">Construction & Demolition</option>
+          <option value="other">Other (please specify below)</option>
+        </select>
+
+        <label for="message">Details of Rubbish / Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">GET MY FREE QUOTE</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    function toggleMobileMenu() {
+      document.getElementById("mobileNav").classList.toggle("open");
+    }
+    // No other script from the original page is needed on this standalone contact page.
+  </script>
+</body>
+</html>
