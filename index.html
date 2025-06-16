@@ -613,10 +613,10 @@
       <div class="bar"></div>
     </div>
     <nav class="desktop-nav">
-      <a href="#">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
     <nav class="mobile-nav" id="mobileNav">
-      <a href="#">Contact</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
@@ -626,10 +626,10 @@
     <p class="hero-cta-text">Enter your postcode to check availability</p>
     
     <div class="postcode-lookup">
-        <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
-        <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
+      <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
+      <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
     </div>
-    <a href="#" id="contactLink" class="postcode-action-link" style="display:none;">Click here to get a detailed quote!</a>
+    <a href="contact.html" id="contactLink" class="postcode-action-link" style="display:none;">Click here to get a detailed quote!</a>
   </section>
 
   <section class="rubbish-types-section">
@@ -638,17 +638,17 @@
       <div class="rubbish-panel">
         <h3>General Waste</h3>
         <p>This includes common household and office waste, such as packaging, old furniture, and general junk. We ensure responsible disposal, sorting recyclables and non-recyclables.</p>
-        <button class="panel-button">GET QUOTE</button>
+        <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
       </div>
       <div class="rubbish-panel">
         <h3>Green Waste</h3>
         <p>Perfect for garden clear-outs! This covers organic materials like branches, leaves, grass clippings, and small stumps. All green waste is taken to a composting facility.</p>
-        <button class="panel-button">GET QUOTE</button>
+        <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
       </div>
       <div class="rubbish-panel">
         <h3>Construction & Demolition</h3>
         <p>From renovation debris to building site waste, we handle concrete, bricks, timber, metals, and more. Our team is equipped for heavy lifting and efficient site clearance.</p>
-        <button class="panel-button">GET QUOTE</button>
+        <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
       </div>
     </div>
   </section>
@@ -742,7 +742,6 @@
       faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
           const answer = question.nextElementSibling;
-          // Toggle active class on question for styling (e.g., changing + to -)
           question.classList.toggle('active');
 
           if (answer.style.display === 'block') {
@@ -757,12 +756,13 @@
       const postcodeInput = document.getElementById('postcodeInput');
       const postcodeSuggestions = document.getElementById('postcodeSuggestions');
       const contactLink = document.getElementById('contactLink');
+      const postcodeLookupDiv = document.querySelector('.postcode-lookup'); // Get the parent div for click outside
 
       const serviceAreas = [
         "Abbotsford 3067", "Aberfeldie 3040", "Airport West 3042", "Albert Park 3206",
         "Alphington 3078", "Armadale 3143", "Ascot Vale 3032", "Ashburton 3147",
         "Ashwood 3147", "Aspendale 3195", "Aspendale Gardens 3195", "Attwood 3049",
-        "Auburn 3123", "Avondale Heights 3034", "Balaclava 3183", "Balwyn 3103",
+        ""Auburn 3123", "Avondale Heights 3034", "Balaclava 3183", "Balwyn 3103",
         "Balwyn North 3104", "Bayswater 3153", "Bayswater North 3153", "Beaumaris 3193",
         "Bentleigh 3204", "Bentleigh East 3165", "Berwick 3806", "Blackburn 3130",
         "Blackburn North 3130", "Blackburn South 3130", "Box Hill 3128", "Box Hill North 3129",
@@ -835,7 +835,7 @@
             postcodeInput.value = this.textContent;
             postcodeSuggestions.innerHTML = ''; // Hide suggestions
             contactLink.style.display = 'block'; // Show the link
-            contactLink.href = "#quote-form-section"; // You can change this to your actual contact page
+            contactLink.href = "contact.html"; // **Link to contact.html**
           });
           postcodeSuggestions.appendChild(li);
         });
@@ -843,7 +843,7 @@
 
       // Hide suggestions when clicking outside
       document.addEventListener('click', function(event) {
-        if (!postcodeLookup.contains(event.target)) {
+        if (!postcodeLookupDiv.contains(event.target)) { // Use the div for checking click outside
           postcodeSuggestions.innerHTML = '';
         }
       });
@@ -854,9 +854,8 @@
         const isValid = serviceAreas.some(area => area.toLowerCase() === inputValue.toLowerCase());
         if (isValid) {
           contactLink.style.display = 'block';
-          contactLink.href = "#quote-form-section"; // Link to the quote form section
+          contactLink.href = "contact.html"; // **Link to contact.html**
         } else if (inputValue.length > 0) {
-          // If something is typed but not valid, hide the link
           contactLink.style.display = 'none';
         }
       });
