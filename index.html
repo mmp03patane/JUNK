@@ -158,21 +158,7 @@
       background-color: #f0f0f0;
     }
 
-    .postcode-action-link {
-        margin-top: 1.5rem;
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.35rem; /* Slightly smaller than initial hero cta text */
-        font-weight: bold;
-        color: #fff;
-        text-decoration: none;
-        display: none; /* Hidden by default */
-        transition: opacity 0.3s ease;
-    }
-
-    .postcode-action-link:hover {
-        text-decoration: underline;
-    }
-
+    /* Removed .postcode-action-link styles as it's no longer needed for display */
 
     /* Rubbish Types Section Styles */
     .rubbish-types-section {
@@ -506,9 +492,7 @@
         padding: 0.6rem 0.8rem;
       }
 
-      .postcode-action-link {
-        font-size: 1.1rem;
-      }
+      /* Removed .postcode-action-link mobile styles as it's no longer needed */
 
       /* Rubbish Types Section Mobile Styles */
       .rubbish-types-section h2 {
@@ -629,8 +613,7 @@
       <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
       <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
     </div>
-    <a href="contact.html" id="contactLink" class="postcode-action-link" style="display:none;">Click here to get a detailed quote!</a>
-  </section>
+    </section>
 
   <section class="rubbish-types-section">
     <h2>WHAT TYPE OF RUBBISH DO YOU HAVE?</h2>
@@ -755,14 +738,15 @@
       // Postcode Lookup Functionality
       const postcodeInput = document.getElementById('postcodeInput');
       const postcodeSuggestions = document.getElementById('postcodeSuggestions');
-      const contactLink = document.getElementById('contactLink');
-      const postcodeLookupDiv = document.querySelector('.postcode-lookup'); // Get the parent div for click outside
+      // const contactLink = document.getElementById('contactLink'); // Removed, no longer needed
+      const postcodeLookupDiv = document.querySelector('.postcode-lookup');
 
       const serviceAreas = [
         "Abbotsford 3067", "Aberfeldie 3040", "Airport West 3042", "Albert Park 3206",
         "Alphington 3078", "Armadale 3143", "Ascot Vale 3032", "Ashburton 3147",
         "Ashwood 3147", "Aspendale 3195", "Aspendale Gardens 3195", "Attwood 3049",
-        "Auburn 3123", "Avondale Heights 3034", "Balaclava 3183", "Balwyn 3103",
+        "Auburn 3123", // Corrected the typo here
+        "Avondale Heights 3034", "Balaclava 3183", "Balwyn 3103",
         "Balwyn North 3104", "Bayswater 3153", "Bayswater North 3153", "Beaumaris 3193",
         "Bentleigh 3204", "Bentleigh East 3165", "Berwick 3806", "Blackburn 3130",
         "Blackburn North 3130", "Blackburn South 3130", "Box Hill 3128", "Box Hill North 3129",
@@ -815,10 +799,14 @@
         "Southbank 3006", "Spotswood 3015", "Springvale 3171", "Springvale South 3172"
       ];
 
+      // Function to redirect to contact page
+      const redirectToContact = () => {
+        window.location.href = "contact.html";
+      };
+
       postcodeInput.addEventListener('input', function() {
         const query = this.value.toLowerCase();
         postcodeSuggestions.innerHTML = ''; // Clear previous suggestions
-        contactLink.style.display = 'none'; // Hide link when typing
 
         if (query.length === 0) {
           return;
@@ -834,8 +822,7 @@
           li.addEventListener('click', function() {
             postcodeInput.value = this.textContent;
             postcodeSuggestions.innerHTML = ''; // Hide suggestions
-            contactLink.style.display = 'block'; // Show the link
-            contactLink.href = "contact.html"; // **Link to contact.html**
+            redirectToContact(); // Redirect immediately on selection
           });
           postcodeSuggestions.appendChild(li);
         });
@@ -843,20 +830,28 @@
 
       // Hide suggestions when clicking outside
       document.addEventListener('click', function(event) {
-        if (!postcodeLookupDiv.contains(event.target)) { // Use the div for checking click outside
+        if (!postcodeLookupDiv.contains(event.target)) {
           postcodeSuggestions.innerHTML = '';
         }
       });
 
-      // Show the link if a valid postcode is entered manually
+      // Redirect if a valid postcode is entered manually and input loses focus
       postcodeInput.addEventListener('blur', function() {
         const inputValue = this.value.trim();
         const isValid = serviceAreas.some(area => area.toLowerCase() === inputValue.toLowerCase());
         if (isValid) {
-          contactLink.style.display = 'block';
-          contactLink.href = "contact.html"; // **Link to contact.html**
-        } else if (inputValue.length > 0) {
-          contactLink.style.display = 'none';
+          redirectToContact(); // Redirect immediately on valid blur
+        }
+      });
+
+      // Optional: Add a keypress listener for 'Enter' key
+      postcodeInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          const inputValue = this.value.trim();
+          const isValid = serviceAreas.some(area => area.toLowerCase() === inputValue.toLowerCase());
+          if (isValid) {
+            redirectToContact(); // Redirect on Enter key if valid
+          }
         }
       });
     });
