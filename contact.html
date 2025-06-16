@@ -35,7 +35,7 @@
       height: 50px;
     }
 
-    /* Desktop Navigation (still present but won't navigate on this standalone page) */
+    /* Desktop Navigation */
     nav.desktop-nav {
       display: block;
     }
@@ -72,7 +72,7 @@
       width: 100%;
       background-color: #198754;
       z-index: 15;
-      text-align: center;
+      text-align: right; /* Align mobile navigation links to the right */
     }
     nav.mobile-nav.open {
       display: block; /* Toggled by JavaScript */
@@ -185,6 +185,13 @@
       nav.desktop-nav {
         display: none; /* Hide desktop nav */
       }
+      .logo {
+        margin-left: -1rem; /* Adjust to align with your heading's left margin on mobile */
+      }
+      header {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
       .contact-page-content {
         padding: 3rem 1rem;
         min-height: calc(100vh - 60px); /* Adjust for smaller header height on mobile */
@@ -271,7 +278,6 @@
     function toggleMobileMenu() {
       document.getElementById("mobileNav").classList.toggle("open");
     }
-    // No other script from the original page is needed on this standalone contact page.
   </script>
 </body>
 </html>
