@@ -158,8 +158,6 @@
       background-color: #f0f0f0;
     }
 
-    /* Removed .postcode-action-link styles as it's no longer needed for display */
-
     /* Rubbish Types Section Styles */
     .rubbish-types-section {
       background-color: #efe2ae; /* Background color for the section */
@@ -492,12 +490,15 @@
         padding: 0.6rem 0.8rem;
       }
 
-      /* Removed .postcode-action-link mobile styles as it's no longer needed */
-
       /* Rubbish Types Section Mobile Styles */
       .rubbish-types-section h2 {
         font-size: 1.8rem; /* Smaller H2 for mobile */
         margin-bottom: 1.5rem;
+      }
+
+      .panels-container {
+        flex-direction: column; /* Stack panels vertically on mobile */
+        align-items: center; /* Center panels when stacked */
       }
 
       .rubbish-panel {
@@ -613,7 +614,7 @@
       <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
       <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
     </div>
-    </section>
+  </section>
 
   <section class="rubbish-types-section">
     <h2>WHAT TYPE OF RUBBISH DO YOU HAVE?</h2>
@@ -738,14 +739,13 @@
       // Postcode Lookup Functionality
       const postcodeInput = document.getElementById('postcodeInput');
       const postcodeSuggestions = document.getElementById('postcodeSuggestions');
-      // const contactLink = document.getElementById('contactLink'); // Removed, no longer needed
       const postcodeLookupDiv = document.querySelector('.postcode-lookup');
 
       const serviceAreas = [
         "Abbotsford 3067", "Aberfeldie 3040", "Airport West 3042", "Albert Park 3206",
         "Alphington 3078", "Armadale 3143", "Ascot Vale 3032", "Ashburton 3147",
         "Ashwood 3147", "Aspendale 3195", "Aspendale Gardens 3195", "Attwood 3049",
-        "Auburn 3123", // Corrected the typo here
+        "Auburn 3123",
         "Avondale Heights 3034", "Balaclava 3183", "Balwyn 3103",
         "Balwyn North 3104", "Bayswater 3153", "Bayswater North 3153", "Beaumaris 3193",
         "Bentleigh 3204", "Bentleigh East 3165", "Berwick 3806", "Blackburn 3130",
