@@ -19,6 +19,7 @@
       line-height: 1.6;
       font-size: 1.25rem;
       text-align: center;
+      overflow-x: hidden; /* Prevent horizontal scroll due to animations */
     }
 
     /* Header Styles */
@@ -30,9 +31,22 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
+      animation: slideInDown 0.8s ease-out forwards; /* Animation for header */
     }
-    .logo img {
-      height: 50px; /* Increased the height of the logo image */
+    /* Logo Styles */
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem; /* Adjusted font size for logo */
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden; /* For underline animation */
+    }
+
+    .logo span:first-child {
+      color: #efe2ae; /* Color for 'NK' */
     }
 
     /* Desktop Navigation */
@@ -45,6 +59,20 @@
       margin-left: 2rem;
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
+      position: relative; /* For hover effect */
+    }
+    nav.desktop-nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #efe2ae;
+      transition: width 0.3s ease-out;
+    }
+    nav.desktop-nav a:hover::after {
+      width: 100%;
     }
 
     /* Hamburger Menu (Hidden by default on desktop) */
@@ -61,6 +89,16 @@
       height: 3px;
       background-color: #fff;
       width: 100%;
+      transition: all 0.3s ease-in-out;
+    }
+    .hamburger-menu.active .bar:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
     }
 
     /* Mobile Navigation (Hidden by default, shown with JS) */
@@ -73,6 +111,8 @@
       background-color: #198754; /* Ensured mobile nav background matches header */
       z-index: 15;
       text-align: right;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.5s ease-out forwards;
     }
     nav.mobile-nav.open {
       display: block; /* Toggled by JavaScript */
@@ -83,6 +123,11 @@
       padding: 1rem;
       text-transform: uppercase;
       font-family: 'Roboto', sans-serif;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background-color 0.3s ease;
+    }
+    nav.mobile-nav a:hover {
+      background-color: #5fae60;
     }
 
     /* Hero Section Styles */
@@ -95,6 +140,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      position: relative;
+      overflow: hidden; /* For animation */
     }
 
     .hero h1 {
@@ -103,6 +150,8 @@
       font-size: 3rem; /* Larger font for desktop */
       line-height: 1.2;
       margin-bottom: 1rem;
+      z-index: 2; /* Ensure text is above any potential background */
+      animation: slideInLeft 1s ease-out forwards;
     }
 
     .hero-location-text { /* New style for "We service all of Melbourne!" */
@@ -110,6 +159,9 @@
       font-size: 1.5rem; /* Larger font size */
       margin-bottom: 1rem;
       max-width: 600px;
+      z-index: 2;
+      animation: slideInRight 1s ease-out forwards;
+      animation-delay: 0.3s;
     }
 
     /* Styles for the new postcode input and dropdown */
@@ -118,6 +170,9 @@
       margin-top: 1.5rem;
       width: 100%;
       max-width: 350px; /* Limit width of postcode input area */
+      z-index: 2;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.6s;
     }
 
     .postcode-input {
@@ -129,6 +184,10 @@
       outline: none;
       font-family: 'Roboto', sans-serif;
       text-align: center; /* Center placeholder text */
+      transition: all 0.3s ease;
+    }
+    .postcode-input:focus {
+      box-shadow: 0 0 0 3px #efe2ae;
     }
 
     .postcode-suggestions {
@@ -152,6 +211,7 @@
       cursor: pointer;
       font-size: 1rem;
       font-family: 'Nunito Sans', sans-serif;
+      transition: background-color 0.2s ease;
     }
 
     .postcode-suggestions li:hover {
@@ -171,6 +231,7 @@
       font-size: 2.5rem;
       color: #000000; /* Black heading color */
       margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease-out forwards;
     }
 
     .panels-container {
@@ -194,7 +255,13 @@
       display: flex; /* Use flexbox for internal layout */
       flex-direction: column; /* Stack content vertically */
       justify-content: space-between; /* Push button to the bottom */
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
     }
+    .rubbish-panel:nth-child(1) { animation-delay: 0.2s; }
+    .rubbish-panel:nth-child(2) { animation-delay: 0.4s; }
+    .rubbish-panel:nth-child(3) { animation-delay: 0.6s; }
 
     .rubbish-panel h3 {
       font-family: 'Oswald', sans-serif;
@@ -202,6 +269,13 @@
       color: #333; /* A slightly darker color for heading inside panel */
       margin-bottom: 1rem;
       text-align: center; /* Center align H3 inside panel */
+    }
+    .rubbish-panel img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
     }
 
     .rubbish-panel p {
@@ -224,7 +298,7 @@
       text-transform: uppercase;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       font-weight: bold;
       display: block; /* Make button a block element */
       width: fit-content; /* Fit content width */
@@ -233,6 +307,61 @@
 
     .panel-button:hover {
       background-color: #5fae60; /* Darker green on hover */
+      transform: translateY(-2px);
+    }
+
+    /* Guide Section Styles */
+    .guide-section {
+      background-color: #222; /* Dark background */
+      color: #fff;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .guide-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .guide-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+      gap: 2rem;
+      animation: fadeIn 1.5s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    .guide-content p {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .guide-button {
+      background-color: #efe2ae; /* Accent color */
+      color: #222;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-family: 'Roboto', sans-serif;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: bold;
+    }
+
+    .guide-button:hover {
+      background-color: #f7eec8;
+      transform: translateY(-2px);
     }
 
     /* FAQ Section Styles */
@@ -248,6 +377,7 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease-out forwards;
     }
 
     .faq-container {
@@ -261,7 +391,15 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
     }
+    .faq-item:nth-child(1) { animation-delay: 0.2s; }
+    .faq-item:nth-child(2) { animation-delay: 0.3s; }
+    .faq-item:nth-child(3) { animation-delay: 0.4s; }
+    .faq-item:nth-child(4) { animation-delay: 0.5s; }
+    .faq-item:nth-child(5) { animation-delay: 0.6s; }
 
     .faq-question {
       background-color: #f0f0f0;
@@ -314,6 +452,7 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease-out forwards;
     }
 
     .testimonials-container {
@@ -338,7 +477,13 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
     }
+    .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
 
     .testimonial-card::before {
       content: '“';
@@ -389,6 +534,7 @@
       font-size: 2.5rem;
       color: #ffffff; /* White heading */
       margin-bottom: 2.5rem;
+      animation: fadeInUp 1s ease-out forwards;
     }
 
     .quote-form-panel {
@@ -440,7 +586,7 @@
       text-transform: uppercase;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       font-weight: bold;
       display: block;
       width: fit-content;
@@ -449,6 +595,33 @@
 
     .quote-form-panel button:hover {
       background-color: #5fae60;
+      transform: translateY(-2px);
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
@@ -462,27 +635,17 @@
       }
       /* Apply smaller header padding only on mobile */
       header {
-        padding: 0.8rem 2rem; /* Reduced top and bottom padding for a smaller mobile header */
+        padding: 0.8rem 1.5rem; /* Reduced padding for a smaller mobile header */
       }
 
-      /* Added styles for logo adjustment on mobile */
       .logo {
-        /* Adjust this value to align with your heading's left margin */
-        margin-left: -1rem; /* Start with a negative margin to pull it left */
-      }
-
-      /* Optional: If you want to refine the padding of the header itself
-         to give more room on the left side of the screen for the logo's new position,
-         you might also adjust the header's padding slightly:
-      */
-      header {
-        padding-left: 1.5rem; /* Example: Slightly reduce left padding of header */
-        padding-right: 1.5rem; /* Example: Slightly reduce right padding of header */
+        font-size: 1.8rem; /* Smaller logo for mobile */
       }
 
       .hero {
         padding: 3rem 1rem; /* Adjust padding for mobile hero */
       }
+      /* Removed hero image, so no specific mobile styles needed for it anymore */
 
       .hero h1 {
         font-size: 2.4rem; /* Smaller font for mobile heading */
@@ -507,7 +670,11 @@
       }
 
       /* Rubbish Types Section Mobile Styles */
-      .rubbish-types-section h2 {
+      .rubbish-types-section h2,
+      .guide-section h2,
+      .faq-section h2,
+      .testimonials-section h2,
+      .quote-form-section h2 {
         font-size: 1.8rem; /* Smaller H2 for mobile */
         margin-bottom: 1.5rem;
       }
@@ -538,11 +705,16 @@
         padding: 0.7rem 1.8rem;
       }
 
-      /* FAQ Section Mobile Styles */
-      .faq-section h2 {
-        font-size: 1.8rem;
+      /* Guide Section Mobile */
+      .guide-content p {
+        font-size: 1.1rem;
+      }
+      .guide-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
       }
 
+      /* FAQ Section Mobile Styles */
       .faq-question {
         font-size: 1.2rem;
         padding: 0.8rem 1rem;
@@ -554,10 +726,6 @@
       }
 
       /* Testimonials Section Mobile Styles */
-      .testimonials-section h2 {
-        font-size: 1.8rem;
-      }
-
       .testimonial-card {
         padding: 1.5rem;
         min-width: unset;
@@ -573,10 +741,6 @@
       }
 
       /* Quote Form Section Mobile Styles */
-      .quote-form-section h2 {
-        font-size: 1.8rem;
-      }
-
       .quote-form-panel {
         padding: 2rem 1.5rem;
         max-width: 90%;
@@ -606,7 +770,7 @@
 <body>
   <header>
     <a href="index.html" class="logo">
-      <img src= />
+      <span>NK</span> JUNK REMOVALS
     </a>
     <div class="hamburger-menu" onclick="toggleMobileMenu()">
       <div class="bar"></div>
@@ -625,31 +789,41 @@
     <h1>LOOKING FOR NO FUSS WASTE REMOVAL?</h1>
     <p class="hero-location-text">We service all of Melbourne!</p>
     <p class="hero-cta-text"><b>Enter your postcode to check availability</b> 👇</p>
-    
     <div class="postcode-lookup">
       <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
       <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
     </div>
-  </section>
+    </section>
 
   <section class="rubbish-types-section">
     <h2>WHAT TYPE OF RUBBISH DO YOU HAVE?</h2>
     <div class="panels-container">
       <div class="rubbish-panel">
+        <img src="https://github.com/mmp03patane/JUNK/blob/main/contractor-clean-up-portland.jpg?raw=true" alt="General Waste">
         <h3>General Waste</h3>
         <p>This includes common household and office waste, such as packaging, old furniture, and general junk. We ensure responsible disposal, sorting recyclables and non-recyclables.</p>
         <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
       </div>
       <div class="rubbish-panel">
+        <img src="https://github.com/mmp03patane/JUNK/blob/main/green-waste-removal.jpg?raw=true" alt="Green Waste">
         <h3>Green Waste</h3>
         <p>Perfect for garden clear-outs! This covers organic materials like branches, leaves, grass clippings, and small stumps. All green waste is taken to a composting facility.</p>
         <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
       </div>
       <div class="rubbish-panel">
+        <img src="https://github.com/mmp03patane/JUNK/blob/main/construction%20waste.jpg?raw=true" alt="Construction & Demolition Waste">
         <h3>Construction & Demolition</h3>
         <p>From renovation debris to building site waste, we handle concrete, bricks, timber, metals, and more. Our team is equipped for heavy lifting and efficient site clearance.</p>
         <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
       </div>
+    </div>
+  </section>
+
+  <section class="guide-section">
+    <h2>DOWNLOAD OUR FREE JUNK REMOVAL GUIDE</h2>
+    <div class="guide-content">
+      <p>Looking for tips on decluttering your home or preparing for a big clean-out? Download our comprehensive guide to efficient and eco-friendly junk removal. It's packed with useful advice and insider tips to make your life easier!</p>
+      <button class="guide-button" onclick="alert('Guide Download Initiated!');">DOWNLOAD GUIDE NOW</button>
     </div>
   </section>
 
@@ -733,6 +907,7 @@
   <script>
     function toggleMobileMenu() {
       document.getElementById("mobileNav").classList.toggle("open");
+      document.querySelector(".hamburger-menu").classList.toggle("active");
     }
 
     // FAQ Toggle Functionality
@@ -871,6 +1046,31 @@
         }
       });
     });
+
+    // Intersection Observer for animations
+    const animateOnScroll = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(animateOnScroll, {
+      root: null,
+      threshold: 0.1
+    });
+
+    // Observe elements for animation (excluding the quote form)
+    document.querySelectorAll('h2, .rubbish-panel, .faq-item, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+    // Specifically observe the guide content for animation
+    const guideContent = document.querySelector('.guide-content');
+    if (guideContent) {
+      observer.observe(guideContent);
+    }
   </script>
 </body>
 </html>
