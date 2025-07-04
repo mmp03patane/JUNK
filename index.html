@@ -13,13 +13,13 @@
             padding: 0;
         }
         body {
-            font-family: 'Lato', sans-serif; /* Changed body font to Lato */
+            font-family: 'Lato', sans-serif;
             background-color: #f7f7f7;
             color: #222;
             line-height: 1.6;
             font-size: 1.25rem;
             text-align: center;
-            overflow-x: hidden; /* Ensure no horizontal scroll from animations */
+            overflow-x: hidden;
         }
 
         /* Header Styles */
@@ -50,9 +50,10 @@
 
         /* Logo Styles */
         .logo {
-            font-family: 'Poppins', sans-serif; /* Changed logo font to Poppins */
+            /* Copied directly from Contact Page's .logo style */
+            font-family: 'Oswald', sans-serif; /* Reverted to Oswald as per contact page */
             font-weight: 700;
-            font-size: 2.2rem; /* CORRECTED: This was the source of the issue, reverted to original 2.2rem */
+            font-size: 2.2rem; /* Reverted to original desired size from contact page */
             color: #fff;
             text-decoration: none;
             letter-spacing: 1px;
@@ -72,17 +73,17 @@
             color: #fff;
             text-decoration: none;
             margin-left: 2rem;
-            font-family: 'Lato', sans-serif; /* Changed nav font to Lato */
+            font-family: 'Lato', sans-serif;
             text-transform: uppercase;
             position: relative;
-            font-weight: 700; /* Made navigation links bolder */
+            font-weight: 700;
         }
         nav.desktop-nav a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 3px; /* Slightly thicker underline */
-            bottom: -8px; /* Moved underline down */
+            height: 3px;
+            bottom: -8px;
             left: 0;
             background-color: #efe2ae;
             transition: width 0.3s ease-out;
@@ -128,7 +129,7 @@
             z-index: 15;
             text-align: right;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: slideDown 0.3s ease-out forwards; /* Mobile menu slide down animation */
+            animation: slideDown 0.3s ease-out forwards;
         }
         nav.mobile-nav.open {
             display: block;
@@ -138,7 +139,7 @@
             display: block;
             padding: 1rem;
             text-transform: uppercase;
-            font-family: 'Lato', sans-serif; /* Changed mobile nav font to Lato */
+            font-family: 'Lato', sans-serif;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             transition: background-color 0.3s ease;
             font-weight: 700;
@@ -171,7 +172,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            /* Added radial gradient for subtle effect */
             background-image: radial-gradient(circle at center, #333, #222);
         }
 
@@ -192,7 +192,7 @@
             transform: rotate(-45deg);
             animation: shine 6s infinite linear;
             pointer-events: none;
-            mix-blend-mode: overlay; /* Blends nicely with background */
+            mix-blend-mode: overlay;
         }
 
         @keyframes shine {
@@ -206,30 +206,30 @@
 
 
         .hero h1 {
-            font-family: 'Poppins', sans-serif; /* Changed hero heading font to Poppins */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 3.5rem; /* Slightly larger for impact */
+            font-size: 3.5rem;
             line-height: 1.2;
             margin-bottom: 1rem;
             z-index: 2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added subtle text shadow */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero-location-text {
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-size: 1.6rem; /* Slightly larger */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
             max-width: 600px;
             z-index: 2;
         }
 
         .hero-cta-text {
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-size: 1.8rem; /* Larger and more prominent */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.8rem;
             margin-top: 1rem;
-            margin-bottom: 1.5rem; /* Increased space below CTA */
+            margin-bottom: 1.5rem;
             z-index: 2;
-            color: #efe2ae; /* Highlighted CTA text color */
+            color: #efe2ae;
         }
 
         /* Styles for the postcode input and dropdown */
@@ -237,36 +237,36 @@
             position: relative;
             margin-top: 1.5rem;
             width: 100%;
-            max-width: 400px; /* Slightly wider input */
+            max-width: 400px;
             z-index: 2;
         }
 
         .postcode-input {
             width: 100%;
-            padding: 1.2rem; /* More padding */
-            font-size: 1.3rem; /* Larger font */
-            border: 2px solid #ddd; /* Subtle border */
-            border-radius: 10px; /* More rounded corners */
+            padding: 1.2rem;
+            font-size: 1.3rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
             outline: none;
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
+            font-family: 'Lato', sans-serif;
             text-align: center;
             transition: all 0.3s ease;
         }
         .postcode-input:focus {
-            box-shadow: 0 0 0 4px #efe2ae; /* More prominent focus ring */
+            box-shadow: 0 0 0 4px #efe2ae;
             border-color: #efe2ae;
         }
 
         .postcode-suggestions {
             list-style: none;
             padding: 0;
-            margin: 5px 0 0 0; /* Space below input */
+            margin: 5px 0 0 0;
             background-color: #fff;
-            border-radius: 10px; /* More rounded corners */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             position: absolute;
             width: 100%;
-            max-height: 250px; /* Slightly taller */
+            max-height: 250px;
             overflow-y: auto;
             z-index: 10;
             text-align: left;
@@ -274,22 +274,22 @@
         }
 
         .postcode-suggestions li {
-            padding: 1rem 1.2rem; /* More padding */
+            padding: 1rem 1.2rem;
             cursor: pointer;
-            font-size: 1.1rem; /* Slightly larger font */
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            transition: background-color 0.2s ease, transform 0.1s ease; /* Added transform transition */
+            font-size: 1.1rem;
+            font-family: 'Lato', sans-serif;
+            transition: background-color 0.2s ease, transform 0.1s ease;
         }
 
         .postcode-suggestions li:hover {
-            background-color: #e0f2f7; /* Lighter hover color */
-            transform: translateX(5px); /* Slide effect on hover */
+            background-color: #e0f2f7;
+            transform: translateX(5px);
         }
 
         /* Section styles - general structure for animations */
         section {
             padding: 4rem 1rem;
-            transition: all 0.5s ease-out; /* Base transition for sections */
+            transition: all 0.5s ease-out;
             opacity: 0;
             transform: translateY(20px);
         }
@@ -307,11 +307,11 @@
         }
 
         .rubbish-types-section h2 {
-            font-family: 'Poppins', sans-serif; /* Changed heading font to Poppins */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 2.8rem; /* Slightly larger */
+            font-size: 2.8rem;
             color: #000000;
-            margin-bottom: 3rem; /* More space below heading */
+            margin-bottom: 3rem;
             position: relative;
         }
 
@@ -329,52 +329,52 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2.5rem; /* Increased gap */
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .rubbish-panel {
             background-color: #ffffff;
-            padding: 2.5rem; /* More padding */
-            border-radius: 15px; /* More rounded corners */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* More prominent shadow */
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
             flex: 1;
             min-width: 280px;
-            max-width: 380px; /* Slightly wider cards */
+            max-width: 380px;
             text-align: left;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added hover transition */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .rubbish-panel:hover {
-            transform: translateY(-8px); /* Lift effect on hover */
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .rubbish-panel h3 {
-            font-family: 'Poppins', sans-serif; /* Changed heading font to Poppins */
-            font-size: 2rem; /* Larger heading */
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
             color: #333;
             margin-bottom: 1.2rem;
             text-align: center;
         }
         .rubbish-panel img {
             width: 100%;
-            height: 200px; /* Slightly taller images */
+            height: 200px;
             object-fit: cover;
-            border-radius: 10px; /* More rounded image corners */
-            margin-bottom: 2rem; /* More space below image */
+            border-radius: 10px;
+            margin-bottom: 2rem;
         }
 
         .rubbish-panel p {
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-size: 1.25rem; /* Slightly larger text */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.25rem;
             color: #555;
             line-height: 1.6;
-            margin-bottom: 2rem; /* More space below text */
+            margin-bottom: 2rem;
             flex-grow: 1;
             text-align: center;
         }
@@ -383,24 +383,24 @@
             background-color: #198754;
             color: #fff;
             border: none;
-            padding: 1rem 2.5rem; /* More padding */
-            font-size: 1.1rem; /* Slightly larger font */
-            font-family: 'Lato', sans-serif; /* Changed button font to Lato */
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-family: 'Lato', sans-serif;
             text-transform: uppercase;
-            border-radius: 10px; /* More rounded corners */
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
-            font-weight: 700; /* Bolder text */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-weight: 700;
             display: block;
             width: fit-content;
             margin: 0 auto;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for buttons */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .panel-button:hover {
             background-color: #5fae60;
-            transform: translateY(-3px); /* More pronounced lift */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Guide Section Styles */
@@ -414,7 +414,7 @@
         }
 
         .guide-section h2 {
-            font-family: 'Poppins', sans-serif; /* Changed heading font to Poppins */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2.8rem;
             color: #fff;
@@ -438,12 +438,12 @@
             align-items: center;
             max-width: 800px;
             margin: 0 auto;
-            gap: 2.5rem; /* Increased gap */
+            gap: 2.5rem;
         }
 
         .guide-content p {
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-size: 1.3rem; /* Slightly larger */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.3rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
         }
@@ -452,11 +452,11 @@
             background-color: #efe2ae;
             color: #222;
             border: none;
-            padding: 1.2rem 3rem; /* More padding */
-            font-size: 1.3rem; /* Larger font */
-            font-family: 'Lato', sans-serif; /* Changed button font to Lato */
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-family: 'Lato', sans-serif;
             text-transform: uppercase;
-            border-radius: 10px; /* More rounded corners */
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             font-weight: 700;
@@ -477,7 +477,7 @@
         }
 
         .faq-section h2 {
-            font-family: 'Poppins', sans-serif; /* Changed heading font to Poppins */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2.8rem;
             color: #000000;
@@ -496,25 +496,25 @@
         }
 
         .faq-container {
-            max-width: 900px; /* Wider FAQ container */
+            max-width: 900px;
             margin: 0 auto;
             text-align: left;
         }
 
         .faq-item {
-            margin-bottom: 1.2rem; /* More space between items */
+            margin-bottom: 1.2rem;
             border: 1px solid #ddd;
-            border-radius: 10px; /* More rounded corners */
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .faq-question {
             background-color: #f0f0f0;
-            padding: 1.2rem 1.8rem; /* More padding */
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-weight: 700; /* Bolder text */
-            font-size: 1.3rem; /* Slightly larger font */
+            padding: 1.2rem 1.8rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -524,14 +524,14 @@
         }
 
         .faq-question:hover {
-            background-color: #e6e6e6; /* Lighter hover color */
+            background-color: #e6e6e6;
         }
 
         .faq-question::after {
             content: '+';
-            font-size: 1.8rem; /* Larger plus/minus icon */
+            font-size: 1.8rem;
             transition: transform 0.3s ease;
-            color: #198754; /* Color the icon */
+            color: #198754;
         }
 
         .faq-question.active::after {
@@ -540,18 +540,18 @@
         }
 
         .faq-answer {
-            padding: 0 1.8rem; /* Adjusted padding for smooth transition */
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
+            padding: 0 1.8rem;
+            font-family: 'Lato', sans-serif;
             font-size: 1.2rem;
             background-color: #fff;
             border-top: 1px solid #eee;
-            max-height: 0; /* Hidden by default for smooth animation */
+            max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smooth transition for height and padding */
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
         }
 
         .faq-answer.open {
-            max-height: 200px; /* Max height to allow content to show */
+            max-height: 200px;
             padding-top: 1.2rem;
             padding-bottom: 1.2rem;
         }
@@ -564,7 +564,7 @@
         }
 
         .testimonials-section h2 {
-            font-family: 'Poppins', sans-serif; /* Changed heading font to Poppins */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2.8rem;
             color: #000000;
@@ -586,16 +586,16 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2.5rem; /* Increased gap */
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .testimonial-card {
             background-color: #ffffff;
-            padding: 2.5rem; /* More padding */
-            border-radius: 15px; /* More rounded corners */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* More prominent shadow */
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
             flex: 1;
             min-width: 280px;
             max-width: 380px;
@@ -604,48 +604,48 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added hover transition */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-8px); /* Lift effect on hover */
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .testimonial-card::before {
             content: '“';
             font-family: serif;
-            font-size: 5em; /* Larger quote icon */
+            font-size: 5em;
             color: #efe2ae;
             position: absolute;
-            top: 5px; /* Adjusted position */
+            top: 5px;
             left: 10px;
             line-height: 1;
-            opacity: 0.7; /* Slightly faded quote */
+            opacity: 0.7;
         }
 
         .testimonial-text {
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-size: 1.2rem; /* Slightly larger */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.2rem;
             color: #333;
             line-height: 1.7;
-            margin-bottom: 1.8rem; /* More space below text */
-            padding-top: 25px; /* Space for the quote icon */
+            margin-bottom: 1.8rem;
+            padding-top: 25px;
             font-style: italic;
         }
 
         .testimonial-author {
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-size: 1.1rem; /* Slightly larger */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
             color: #198754;
-            font-weight: 700; /* Bolder */
+            font-weight: 700;
             text-align: right;
         }
 
         .stars {
             color: gold;
-            font-size: 1.4rem; /* Larger stars */
-            margin-bottom: 0.8rem; /* More space */
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
             text-align: right;
         }
 
@@ -657,7 +657,7 @@
         }
 
         .quote-form-section h2 {
-            font-family: 'Poppins', sans-serif; /* Changed heading font to Poppins */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             font-size: 2.8rem;
             color: #ffffff;
@@ -677,10 +677,10 @@
 
         .quote-form-panel {
             background-color: #ffffff;
-            padding: 3.5rem 2.5rem; /* More padding */
-            border-radius: 15px; /* More rounded corners */
+            padding: 3.5rem 2.5rem;
+            border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-            max-width: 650px; /* Slightly wider form */
+            max-width: 650px;
             margin: 0 auto;
             text-align: left;
             color: #222;
@@ -688,10 +688,10 @@
 
         .quote-form-panel label {
             display: block;
-            margin-bottom: 0.8rem; /* More space */
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
-            font-weight: 700; /* Bolder */
-            font-size: 1.1rem; /* Slightly larger */
+            margin-bottom: 0.8rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
             color: #444;
         }
 
@@ -701,11 +701,11 @@
         .quote-form-panel textarea,
         .quote-form-panel select {
             width: 100%;
-            padding: 1rem; /* More padding */
-            margin-bottom: 2rem; /* More space */
+            padding: 1rem;
+            margin-bottom: 2rem;
             border: 1px solid #ccc;
-            border-radius: 8px; /* More rounded corners */
-            font-family: 'Lato', sans-serif; /* Changed font to Lato */
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
             font-size: 1.1rem;
             color: #222;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -723,18 +723,18 @@
 
         .quote-form-panel textarea {
             resize: vertical;
-            min-height: 120px; /* Taller textarea */
+            min-height: 120px;
         }
 
         .quote-form-panel button {
             background-color: #198754;
             color: #fff;
             border: none;
-            padding: 1.2rem 3rem; /* More padding */
-            font-size: 1.3rem; /* Larger font */
-            font-family: 'Lato', sans-serif; /* Changed button font to Lato */
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-family: 'Lato', sans-serif;
             text-transform: uppercase;
-            border-radius: 10px; /* More rounded corners */
+            border-radius: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             font-weight: 700;
@@ -769,7 +769,8 @@
             }
 
             .logo {
-                font-size: 1.8rem; /* Corrected logo size for mobile */
+                /* Copied directly from Contact Page's mobile .logo style */
+                font-size: 1.8rem;
             }
 
             .hero {
@@ -803,7 +804,7 @@
             .faq-section h2,
             .testimonials-section h2,
             .quote-form-section h2 {
-                font-size: 2.2rem; /* Adjusted for mobile */
+                font-size: 2.2rem;
                 margin-bottom: 2rem;
             }
 
@@ -812,7 +813,7 @@
             .faq-section h2::after,
             .testimonials-section h2::after,
             .quote-form-section h2::after {
-                width: 60px; /* Shorter underline for mobile */
+                width: 60px;
                 height: 3px;
             }
 
@@ -1054,10 +1055,8 @@
 
                     if (answer.classList.contains('open')) {
                         answer.classList.remove('open');
-                        // Set max-height to 0 after transition to allow smooth collapse
                         answer.style.maxHeight = null;
                     } else {
-                        // Set max-height to scrollHeight for smooth expand
                         answer.style.maxHeight = answer.scrollHeight + "px";
                         answer.classList.add('open');
                     }
@@ -1184,16 +1183,16 @@
         const sections = document.querySelectorAll('section');
 
         const observerOptions = {
-            root: null, // viewport
+            root: null,
             rootMargin: '0px',
-            threshold: 0.1 // Trigger when 10% of the section is visible
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
