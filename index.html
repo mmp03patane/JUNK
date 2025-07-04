@@ -30,9 +30,27 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
-      animation: slideInDown 0.8s ease-out forwards; /* Animation for header */
+      position: relative; /* Changed from animated 'relative' */
+      width: 100%;
+      z-index: 1000; /* Ensure header is on top */
+      transition: all 0.3s ease; /* Smooth transition for sticky state */
     }
+
+    /* Semi-sticky Header styles (hidden by default, applied by JS) */
+    header.sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      padding: 0.8rem 2rem; /* Slightly reduced padding when sticky */
+    }
+
+    /* Adjust body padding for fixed header */
+    body.sticky-header-active {
+        padding-top: 60px; /* Adjust this value to match your header's height when sticky */
+    }
+
+
     /* Logo Styles */
     .logo {
       font-family: 'Oswald', sans-serif;
@@ -104,7 +122,7 @@
     /* Mobile Navigation (Hidden by default, shown with JS) */
     nav.mobile-nav {
       display: none; /* Hidden by default */
-      position: absolute;
+      position: absolute; /* Adjusted to 'absolute' so it doesn't move with sticky header */
       top: 100%; /* Positions it right below the header */
       left: 0;
       width: 100%;
@@ -112,7 +130,7 @@
       z-index: 15;
       text-align: right;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 0.5s ease-out forwards;
+      /* Removed fadeIn animation */
     }
     nav.mobile-nav.open {
       display: block; /* Toggled by JavaScript */
@@ -141,7 +159,8 @@
       justify-content: center;
       text-align: center;
       position: relative;
-      overflow: hidden; /* For animation */
+      overflow: hidden;
+      /* Removed animations for hero h1, hero-location-text, postcode-lookup */
     }
 
     .hero h1 {
@@ -150,29 +169,24 @@
       font-size: 3rem; /* Larger font for desktop */
       line-height: 1.2;
       margin-bottom: 1rem;
-      z-index: 2; /* Ensure text is above any potential background */
-      animation: slideInLeft 1s ease-out forwards;
+      z-index: 2;
     }
 
-    .hero-location-text { /* New style for "We service all of Melbourne!" */
+    .hero-location-text {
       font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem; /* Larger font size */
+      font-size: 1.5rem;
       margin-bottom: 1rem;
       max-width: 600px;
       z-index: 2;
-      animation: slideInRight 1s ease-out forwards;
-      animation-delay: 0.3s;
     }
 
-    /* Styles for the new postcode input and dropdown */
+    /* Styles for the postcode input and dropdown */
     .postcode-lookup {
       position: relative;
       margin-top: 1.5rem;
       width: 100%;
-      max-width: 350px; /* Limit width of postcode input area */
+      max-width: 350px;
       z-index: 2;
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 0.6s;
     }
 
     .postcode-input {
@@ -183,7 +197,7 @@
       border-radius: 8px;
       outline: none;
       font-family: 'Roboto', sans-serif;
-      text-align: center; /* Center placeholder text */
+      text-align: center;
       transition: all 0.3s ease;
     }
     .postcode-input:focus {
@@ -201,9 +215,9 @@
       width: 100%;
       max-height: 200px;
       overflow-y: auto;
-      z-index: 10; /* Ensure it's above other content */
-      text-align: left; /* Align suggestion text */
-      color: #222; /* Black text for suggestions */
+      z-index: 10;
+      text-align: left;
+      color: #222;
     }
 
     .postcode-suggestions li {
@@ -220,7 +234,7 @@
 
     /* Rubbish Types Section Styles */
     .rubbish-types-section {
-      background-color: #efe2ae; /* Background color for the section */
+      background-color: #efe2ae;
       padding: 4rem 1rem;
       text-align: center;
     }
@@ -229,46 +243,48 @@
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
       font-size: 2.5rem;
-      color: #000000; /* Black heading color */
+      color: #000000;
       margin-bottom: 2.5rem;
-      animation: fadeInUp 1s ease-out forwards;
+      /* Animation for h2 is handled by Intersection Observer */
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .panels-container {
       display: flex;
-      flex-wrap: wrap; /* Allow panels to wrap to next line on smaller screens */
-      justify-content: center; /* Center panels horizontally */
-      gap: 2rem; /* Space between panels */
-      max-width: 1200px; /* Limit container width */
-      margin: 0 auto; /* Center the container */
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .rubbish-panel {
-      background-color: #ffffff; /* Panel background */
+      background-color: #ffffff;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Floating panel shadow */
-      flex: 1; /* Allow panels to grow and shrink */
-      min-width: 280px; /* Minimum width for panels */
-      max-width: 350px; /* Maximum width for panels */
-      text-align: left; /* Text inside panel is left-aligned */
-      display: flex; /* Use flexbox for internal layout */
-      flex-direction: column; /* Stack content vertically */
-      justify-content: space-between; /* Push button to the bottom */
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeInUp 1s ease-out forwards;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /* Animation for panels is handled by Intersection Observer */
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
-    .rubbish-panel:nth-child(1) { animation-delay: 0.2s; }
-    .rubbish-panel:nth-child(2) { animation-delay: 0.4s; }
-    .rubbish-panel:nth-child(3) { animation-delay: 0.6s; }
+    /* Delay applied by JS for staggered effect */
 
     .rubbish-panel h3 {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.7rem; /* Larger font size for panel headings */
-      color: #333; /* A slightly darker color for heading inside panel */
+      font-size: 1.7rem;
+      color: #333;
       margin-bottom: 1rem;
-      text-align: center; /* Center align H3 inside panel */
+      text-align: center;
     }
     .rubbish-panel img {
       width: 100%;
@@ -280,39 +296,39 @@
 
     .rubbish-panel p {
       font-family: 'Nunito Sans', sans-serif;
-      font-size: 1.2rem; /* Larger paragraph font size inside panel */
+      font-size: 1.2rem;
       color: #555;
       line-height: 1.5;
-      margin-bottom: 1.5rem; /* Space before the button */
-      flex-grow: 1; /* Allow paragraph to take up available space */
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
       text-align: center;
     }
 
     .panel-button {
-      background-color: #198754; /* Green button */
+      background-color: #198754;
       color: #fff;
       border: none;
       padding: 0.8rem 2rem;
-      font-size: 1rem; /* Slightly smaller font size for panel buttons */
+      font-size: 1rem;
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
       font-weight: bold;
-      display: block; /* Make button a block element */
-      width: fit-content; /* Fit content width */
-      margin: 0 auto; /* Center the button */
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
     }
 
     .panel-button:hover {
-      background-color: #5fae60; /* Darker green on hover */
+      background-color: #5fae60;
       transform: translateY(-2px);
     }
 
     /* Guide Section Styles */
     .guide-section {
-      background-color: #222; /* Dark background */
+      background-color: #222;
       color: #fff;
       padding: 4rem 1rem;
       text-align: center;
@@ -324,7 +340,9 @@
       font-size: 2.5rem;
       color: #fff;
       margin-bottom: 2.5rem;
-      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .guide-content {
@@ -334,9 +352,11 @@
       max-width: 800px;
       margin: 0 auto;
       gap: 2rem;
-      animation: fadeIn 1.5s ease-out forwards;
-      animation-delay: 0.3s;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
+
 
     .guide-content p {
       font-family: 'Nunito Sans', sans-serif;
@@ -346,7 +366,7 @@
     }
 
     .guide-button {
-      background-color: #efe2ae; /* Accent color */
+      background-color: #efe2ae;
       color: #222;
       border: none;
       padding: 1rem 2.5rem;
@@ -366,7 +386,7 @@
 
     /* FAQ Section Styles */
     .faq-section {
-      background-color: #ffffff; /* White background for FAQ */
+      background-color: #ffffff;
       padding: 4rem 1rem;
       text-align: center;
     }
@@ -377,7 +397,9 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
-      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .faq-container {
@@ -391,15 +413,10 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
-    .faq-item:nth-child(1) { animation-delay: 0.2s; }
-    .faq-item:nth-child(2) { animation-delay: 0.3s; }
-    .faq-item:nth-child(3) { animation-delay: 0.4s; }
-    .faq-item:nth-child(4) { animation-delay: 0.5s; }
-    .faq-item:nth-child(5) { animation-delay: 0.6s; }
 
     .faq-question {
       background-color: #f0f0f0;
@@ -435,13 +452,13 @@
       font-size: 1.2rem;
       background-color: #fff;
       border-top: 1px solid #eee;
-      display: none; /* Hidden by default */
+      display: none;
       overflow: hidden;
     }
 
     /* Testimonials Section Styles */
     .testimonials-section {
-      background-color: #f7f7f7; /* Light grey background */
+      background-color: #f7f7f7;
       padding: 4rem 1rem;
       text-align: center;
     }
@@ -452,7 +469,9 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
-      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .testimonials-container {
@@ -477,19 +496,16 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
-    .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
-    .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
-    .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
 
     .testimonial-card::before {
       content: '“';
       font-family: serif;
       font-size: 4em;
-      color: #efe2ae; /* Matching the rubbish section background for a subtle touch */
+      color: #efe2ae;
       position: absolute;
       top: 10px;
       left: 15px;
@@ -502,14 +518,14 @@
       color: #333;
       line-height: 1.6;
       margin-bottom: 1.5rem;
-      padding-top: 20px; /* Space for the quote mark */
+      padding-top: 20px;
       font-style: italic;
     }
 
     .testimonial-author {
       font-family: 'Roboto', sans-serif;
       font-size: 1rem;
-      color: #198754; /* Green accent for the author name */
+      color: #198754;
       font-weight: bold;
       text-align: right;
     }
@@ -523,7 +539,7 @@
 
     /* Quote Form Section Styles */
     .quote-form-section {
-      background-color: #198754; /* Green background */
+      background-color: #198754;
       padding: 4rem 1rem;
       text-align: center;
     }
@@ -532,20 +548,22 @@
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
       font-size: 2.5rem;
-      color: #ffffff; /* White heading */
+      color: #ffffff;
       margin-bottom: 2.5rem;
-      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px); /* Initial state for animation */
+      opacity: 0; /* Initial state for animation */
+      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .quote-form-panel {
-      background-color: #ffffff; /* White panel */
+      background-color: #ffffff;
       padding: 3rem 2rem;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       max-width: 600px;
       margin: 0 auto;
       text-align: left;
-      color: #222; /* Black text */
+      color: #222;
     }
 
     .quote-form-panel label {
@@ -599,26 +617,6 @@
     }
 
     /* Keyframe Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideInDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideInLeft {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    @keyframes slideInRight {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
     @keyframes fadeInUp {
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -628,35 +626,41 @@
     @media (max-width: 767px) {
       /* Show hamburger menu and hide desktop nav on mobile */
       .hamburger-menu {
-        display: flex; /* Show hamburger */
+        display: flex;
       }
       nav.desktop-nav {
-        display: none; /* Hide desktop nav */
+        display: none;
       }
       /* Apply smaller header padding only on mobile */
       header {
-        padding: 0.8rem 1.5rem; /* Reduced padding for a smaller mobile header */
+        padding: 0.8rem 1.5rem;
+      }
+      header.sticky {
+          padding: 0.6rem 1.5rem; /* Adjust sticky padding for mobile */
+      }
+      body.sticky-header-active {
+        padding-top: 50px; /* Adjust for mobile sticky header height */
       }
 
+
       .logo {
-        font-size: 1.8rem; /* Smaller logo for mobile */
+        font-size: 1.8rem;
       }
 
       .hero {
-        padding: 3rem 1rem; /* Adjust padding for mobile hero */
+        padding: 3rem 1rem;
       }
-      /* Removed hero image, so no specific mobile styles needed for it anymore */
 
       .hero h1 {
-        font-size: 2.4rem; /* Smaller font for mobile heading */
+        font-size: 2.4rem;
       }
 
       .hero-location-text {
-        font-size: 1.3rem; /* Adjusted font size for mobile */
+        font-size: 1.3rem;
       }
 
       .hero-cta-text {
-        font-size: 1.3rem; /* Adjusted font size for mobile CTA text */
+        font-size: 1.3rem;
       }
 
       .postcode-input {
@@ -675,33 +679,33 @@
       .faq-section h2,
       .testimonials-section h2,
       .quote-form-section h2 {
-        font-size: 1.8rem; /* Smaller H2 for mobile */
+        font-size: 1.8rem;
         margin-bottom: 1.5rem;
       }
 
       .panels-container {
-        flex-direction: column; /* Stack panels vertically on mobile */
-        align-items: center; /* Center panels when stacked */
+        flex-direction: column;
+        align-items: center;
       }
 
       .rubbish-panel {
         padding: 1.5rem;
-        min-width: unset; /* Remove min-width to allow better shrinking on very small screens */
-        max-width: 90%; /* Take up more width on small mobile screens */
-        margin-left: auto; /* Center individual panels */
-        margin-right: auto; /* Center individual panels */
+        min-width: unset;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .rubbish-panel h3 {
-        font-size: 1.5rem; /* Slightly larger H3 for mobile panels */
+        font-size: 1.5rem;
       }
 
       .rubbish-panel p {
-        font-size: 1.3rem; /* Slightly larger paragraph text for mobile panels */
+        font-size: 1.3rem;
       }
 
       .panel-button {
-        font-size: 0.9rem; /* Smaller font for panel buttons on mobile */
+        font-size: 0.9rem;
         padding: 0.7rem 1.8rem;
       }
 
@@ -768,7 +772,7 @@
   </style>
 </head>
 <body>
-  <header>
+  <header id="mainHeader">
     <a href="index.html" class="logo">
       <span>NK</span> JUNK REMOVALS
     </a>
@@ -793,7 +797,7 @@
       <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
       <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
     </div>
-    </section>
+  </section>
 
   <section class="rubbish-types-section">
     <h2>WHAT TYPE OF RUBBISH DO YOU HAVE?</h2>
@@ -1048,29 +1052,63 @@
     });
 
     // Intersection Observer for animations
+    const animatedElements = new Map(); // To store elements and their animation state
+
     const animateOnScroll = (entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-          observer.unobserve(entry.target);
+        if (entry.isIntersecting && !animatedElements.has(entry.target)) {
+          // If element is intersecting and not yet animated
+          const element = entry.target;
+          const animationDelay = element.dataset.animationDelay || '0s'; // Get delay from data attribute
+
+          element.style.animation = `fadeInUp 1s ease-out forwards ${animationDelay}`;
+          element.style.animationPlayState = 'running';
+          animatedElements.set(element, true); // Mark as animated
+          observer.unobserve(element); // Stop observing after first animation
         }
       });
     };
 
     const observer = new IntersectionObserver(animateOnScroll, {
       root: null,
-      threshold: 0.1
+      threshold: 0.1 // Adjust as needed
     });
 
-    // Observe elements for animation (excluding the quote form)
-    document.querySelectorAll('h2, .rubbish-panel, .faq-item, .testimonial-card').forEach(el => {
-      observer.observe(el);
+    // Observe elements for animation
+    // Only apply animations to rubbish panels, and generic h2s
+    document.querySelectorAll('.rubbish-panel').forEach((el, index) => {
+        // Add a data-attribute for staggered animation
+        el.dataset.animationDelay = `${index * 0.2}s`;
+        observer.observe(el);
     });
-    // Specifically observe the guide content for animation
-    const guideContent = document.querySelector('.guide-content');
-    if (guideContent) {
-      observer.observe(guideContent);
-    }
+
+    // Observe other general elements that should animate on scroll, without initial animation
+    document.querySelectorAll('.rubbish-types-section h2, .guide-section h2, .guide-content, .faq-section h2, .faq-item, .testimonials-section h2, .testimonial-card, .quote-form-section h2').forEach((el, index) => {
+        if (el.classList.contains('faq-item')) {
+            el.dataset.animationDelay = `${index * 0.1}s`; // Faster stagger for FAQ
+        } else if (el.classList.contains('testimonial-card')) {
+            el.dataset.animationDelay = `${index * 0.2}s`; // Stagger for testimonials
+        } else {
+            el.dataset.animationDelay = '0s'; // No stagger for other h2s
+        }
+        observer.observe(el);
+    });
+
+
+    // Semi-sticky header functionality
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      const stickyOffset = 50; // The scroll position at which the header becomes sticky
+
+      if (window.scrollY > stickyOffset) {
+        header.classList.add('sticky');
+        document.body.classList.add('sticky-header-active');
+      } else {
+        header.classList.remove('sticky');
+        document.body.classList.remove('sticky-header-active');
+      }
+    });
+
   </script>
 </body>
 </html>
