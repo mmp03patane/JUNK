@@ -31,8 +31,20 @@
       align-items: center;
       position: relative;
     }
-    .logo img {
-      height: 50px;
+    /* Logo Styles */
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem; /* Adjusted font size for logo */
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo span:first-child {
+      color: #efe2ae; /* Color for 'NK' */
     }
 
     /* Desktop Navigation */
@@ -45,6 +57,20 @@
       margin-left: 2rem;
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
+      position: relative;
+    }
+    nav.desktop-nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #efe2ae;
+      transition: width 0.3s ease-out;
+    }
+    nav.desktop-nav a:hover::after {
+      width: 100%;
     }
 
     /* Hamburger Menu (Hidden by default on desktop) */
@@ -61,6 +87,16 @@
       height: 3px;
       background-color: #fff;
       width: 100%;
+      transition: all 0.3s ease-in-out;
+    }
+    .hamburger-menu.active .bar:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
     }
 
     /* Mobile Navigation (Hidden by default, shown with JS) */
@@ -83,6 +119,11 @@
       padding: 1rem;
       text-transform: uppercase;
       font-family: 'Roboto', sans-serif;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background-color 0.3s ease;
+    }
+    nav.mobile-nav a:hover {
+      background-color: #5fae60;
     }
 
     /* Contact Page Specific Content Styles */
@@ -185,9 +226,7 @@
       nav.desktop-nav {
         display: none; /* Hide desktop nav */
       }
-      .logo {
-        margin-left: -1rem; /* Adjust to align with your heading's left margin on mobile */
-      }
+      /* Removed specific mobile margin for logo as it's now text based */
       header {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
@@ -228,7 +267,7 @@
 <body>
   <header>
     <a href="index.html" class="logo">
-      <img src="https://github.com/mmp03patane/JUNK/blob/main/Junk.png?raw=true" alt="Creative365 Logo" />
+      <span>NK</span> JUNK REMOVALS
     </a>
     <div class="hamburger-menu" onclick="toggleMobileMenu()">
       <div class="bar"></div>
@@ -277,6 +316,7 @@
   <script>
     function toggleMobileMenu() {
       document.getElementById("mobileNav").classList.toggle("open");
+      document.querySelector(".hamburger-menu").classList.toggle("active"); // Also toggle active class on hamburger
     }
   </script>
 </body>
