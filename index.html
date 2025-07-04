@@ -297,11 +297,15 @@
             transform: translateY(0);
         }
 
-        /* Rubbish Types Section Styles */
+        /* Rubbish Types Section Styles - NO ANIMATION */
         .rubbish-types-section {
             background-color: #efe2ae;
             padding: 4rem 1rem;
             text-align: center;
+            /* Override general section animation properties */
+            opacity: 1; /* Always visible */
+            transform: translateY(0); /* Always in its default position */
+            transition: none; /* No animation for this section */
         }
 
         .rubbish-types-section h2 {
@@ -1187,7 +1191,8 @@
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                // Only apply fade-in to sections that are NOT 'rubbish-types-section'
+                if (entry.isIntersecting && !entry.target.classList.contains('rubbish-types-section')) {
                     entry.target.classList.add('fade-in');
                     observer.unobserve(entry.target);
                 }
@@ -1195,7 +1200,10 @@
         }, observerOptions);
 
         sections.forEach(section => {
-            observer.observe(section);
+            // Only observe sections that are NOT 'rubbish-types-section'
+            if (!section.classList.contains('rubbish-types-section')) {
+                observer.observe(section);
+            }
         });
 
         // Semi-sticky header functionality
