@@ -19,7 +19,7 @@
       line-height: 1.6;
       font-size: 1.25rem;
       text-align: center;
-      overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+      /* overflow-x: hidden; Removed as no horizontal scroll caused by animations */
     }
 
     /* Header Styles */
@@ -30,13 +30,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative; /* Changed from animated 'relative' */
+      position: relative;
       width: 100%;
       z-index: 1000; /* Ensure header is on top */
       transition: all 0.3s ease; /* Smooth transition for sticky state */
     }
 
-    /* Semi-sticky Header styles (hidden by default, applied by JS) */
+    /* Semi-sticky Header styles */
     header.sticky {
       position: fixed;
       top: 0;
@@ -50,7 +50,6 @@
         padding-top: 60px; /* Adjust this value to match your header's height when sticky */
     }
 
-
     /* Logo Styles */
     .logo {
       font-family: 'Oswald', sans-serif;
@@ -60,7 +59,7 @@
       text-decoration: none;
       letter-spacing: 1px;
       position: relative;
-      overflow: hidden; /* For underline animation */
+      overflow: hidden;
     }
 
     .logo span:first-child {
@@ -122,15 +121,14 @@
     /* Mobile Navigation (Hidden by default, shown with JS) */
     nav.mobile-nav {
       display: none; /* Hidden by default */
-      position: absolute; /* Adjusted to 'absolute' so it doesn't move with sticky header */
+      position: absolute;
       top: 100%; /* Positions it right below the header */
       left: 0;
       width: 100%;
-      background-color: #198754; /* Ensured mobile nav background matches header */
+      background-color: #198754;
       z-index: 15;
       text-align: right;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      /* Removed fadeIn animation */
     }
     nav.mobile-nav.open {
       display: block; /* Toggled by JavaScript */
@@ -150,7 +148,7 @@
 
     /* Hero Section Styles */
     .hero {
-      background-color: #222; /* Dark background for the hero section */
+      background-color: #222;
       color: #fff;
       padding: 4rem 1rem;
       display: flex;
@@ -160,13 +158,12 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      /* Removed animations for hero h1, hero-location-text, postcode-lookup */
     }
 
     .hero h1 {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 3rem; /* Larger font for desktop */
+      font-size: 3rem;
       line-height: 1.2;
       margin-bottom: 1rem;
       z-index: 2;
@@ -245,10 +242,6 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
-      /* Animation for h2 is handled by Intersection Observer */
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .panels-container {
@@ -272,12 +265,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      /* Animation for panels is handled by Intersection Observer */
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
-    /* Delay applied by JS for staggered effect */
 
     .rubbish-panel h3 {
       font-family: 'Oswald', sans-serif;
@@ -340,9 +328,6 @@
       font-size: 2.5rem;
       color: #fff;
       margin-bottom: 2.5rem;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .guide-content {
@@ -352,11 +337,7 @@
       max-width: 800px;
       margin: 0 auto;
       gap: 2rem;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
-
 
     .guide-content p {
       font-family: 'Nunito Sans', sans-serif;
@@ -397,9 +378,6 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .faq-container {
@@ -413,9 +391,6 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .faq-question {
@@ -469,9 +444,6 @@
       font-size: 2.5rem;
       color: #000000;
       margin-bottom: 2.5rem;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .testimonials-container {
@@ -496,9 +468,6 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .testimonial-card::before {
@@ -550,9 +519,6 @@
       font-size: 2.5rem;
       color: #ffffff;
       margin-bottom: 2.5rem;
-      transform: translateY(20px); /* Initial state for animation */
-      opacity: 0; /* Initial state for animation */
-      animation: none; /* Reset animation to be triggered by JS */
     }
 
     .quote-form-panel {
@@ -616,12 +582,6 @@
       transform: translateY(-2px);
     }
 
-    /* Keyframe Animations */
-    @keyframes fadeInUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
     @media (max-width: 767px) {
       /* Show hamburger menu and hide desktop nav on mobile */
@@ -641,7 +601,6 @@
       body.sticky-header-active {
         padding-top: 50px; /* Adjust for mobile sticky header height */
       }
-
 
       .logo {
         font-size: 1.8rem;
@@ -1051,49 +1010,9 @@
       });
     });
 
-    // Intersection Observer for animations
-    const animatedElements = new Map(); // To store elements and their animation state
-
-    const animateOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animatedElements.has(entry.target)) {
-          // If element is intersecting and not yet animated
-          const element = entry.target;
-          const animationDelay = element.dataset.animationDelay || '0s'; // Get delay from data attribute
-
-          element.style.animation = `fadeInUp 1s ease-out forwards ${animationDelay}`;
-          element.style.animationPlayState = 'running';
-          animatedElements.set(element, true); // Mark as animated
-          observer.unobserve(element); // Stop observing after first animation
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(animateOnScroll, {
-      root: null,
-      threshold: 0.1 // Adjust as needed
-    });
-
-    // Observe elements for animation
-    // Only apply animations to rubbish panels, and generic h2s
-    document.querySelectorAll('.rubbish-panel').forEach((el, index) => {
-        // Add a data-attribute for staggered animation
-        el.dataset.animationDelay = `${index * 0.2}s`;
-        observer.observe(el);
-    });
-
-    // Observe other general elements that should animate on scroll, without initial animation
-    document.querySelectorAll('.rubbish-types-section h2, .guide-section h2, .guide-content, .faq-section h2, .faq-item, .testimonials-section h2, .testimonial-card, .quote-form-section h2').forEach((el, index) => {
-        if (el.classList.contains('faq-item')) {
-            el.dataset.animationDelay = `${index * 0.1}s`; // Faster stagger for FAQ
-        } else if (el.classList.contains('testimonial-card')) {
-            el.dataset.animationDelay = `${index * 0.2}s`; // Stagger for testimonials
-        } else {
-            el.dataset.animationDelay = '0s'; // No stagger for other h2s
-        }
-        observer.observe(el);
-    });
-
+    // Removed Intersection Observer related animation code
+    // All elements now display statically by default as per CSS
+    // The only remaining JS animation is for the hamburger menu toggle (active class)
 
     // Semi-sticky header functionality
     window.addEventListener('scroll', () => {
