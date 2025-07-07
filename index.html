@@ -1,1254 +1,2447 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Creative365</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+
     <style>
+
         /* Universal Box-sizing and Base Styles */
+
         * {
+
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
+
         }
+
         body {
+
             font-family: 'Lato', sans-serif; /* Consistent body font: Lato */
+
             background-color: #f7f7f7;
+
             color: #222;
+
             line-height: 1.6;
+
             font-size: 1.25rem;
+
             text-align: center;
+
             overflow-x: hidden;
+
         }
+
+
 
         /* Header Styles */
+
         header {
+
             background-color: #198754;
+
             color: #fff;
+
             padding: 1rem 2rem;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             position: relative;
+
             width: 100%;
+
             z-index: 1000;
+
             transition: all 0.3s ease;
+
         }
+
+
 
         header.sticky {
+
             position: fixed;
+
             top: 0;
+
             left: 0;
+
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
             padding: 0.8rem 2rem;
+
         }
+
+
 
         body.sticky-header-active {
+
             padding-top: 60px;
+
         }
+
+
 
         /* Logo Styles */
+
         .logo {
+
             font-family: 'Oswald', sans-serif; /* Matched contact page: Oswald */
+
             font-weight: 700;
+
             font-size: 2.2rem; /* Matched contact page: 2.2rem for desktop */
+
             color: #fff;
+
             text-decoration: none;
+
             letter-spacing: 1px;
+
             position: relative;
+
             overflow: hidden;
+
         }
+
+
 
         .logo span:first-child {
+
             color: #efe2ae;
+
         }
+
+
 
         /* Desktop Navigation */
+
         nav.desktop-nav {
+
             display: block;
+
         }
+
         nav.desktop-nav a {
+
             color: #fff;
+
             text-decoration: none;
+
             margin-left: 2rem;
+
             font-family: 'Lato', sans-serif; /* Consistent nav font: Lato */
+
             text-transform: uppercase;
+
             position: relative;
+
             font-weight: 700;
+
         }
+
         nav.desktop-nav a::after {
+
             content: '';
+
             position: absolute;
+
             width: 0;
+
             height: 3px;
+
             bottom: -8px;
+
             left: 0;
+
             background-color: #efe2ae;
+
             transition: width 0.3s ease-out;
+
         }
+
         nav.desktop-nav a:hover::after {
+
             width: 100%;
+
         }
+
+
 
         /* Hamburger Menu (Hidden by default on desktop) */
+
         .hamburger-menu {
+
             display: none;
+
             width: 30px;
+
             height: 21px;
+
             cursor: pointer;
+
             flex-direction: column;
+
             justify-content: space-between;
+
             z-index: 20;
+
         }
+
         .hamburger-menu .bar {
+
             height: 3px;
+
             background-color: #fff;
+
             width: 100%;
+
             transition: all 0.3s ease-in-out;
+
         }
+
         .hamburger-menu.active .bar:nth-child(1) {
+
             transform: translateY(9px) rotate(45deg);
+
         }
+
         .hamburger-menu.active .bar:nth-child(2) {
+
             opacity: 0;
+
         }
+
         .hamburger-menu.active .bar:nth-child(3) {
+
             transform: translateY(-9px) rotate(-45deg);
+
         }
+
+
 
         /* Mobile Navigation (Hidden by default, shown with JS) */
+
         nav.mobile-nav {
+
             display: none;
+
             position: absolute;
+
             top: 100%;
+
             left: 0;
+
             width: 100%;
+
             background-color: #198754;
+
             z-index: 15;
+
             text-align: right;
+
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
             animation: slideDown 0.3s ease-out forwards;
+
         }
+
         nav.mobile-nav.open {
+
             display: block;
+
         }
+
         nav.mobile-nav a {
+
             color: #fff;
+
             display: block;
+
             padding: 1rem;
+
             text-transform: uppercase;
+
             font-family: 'Lato', sans-serif; /* Consistent mobile nav font: Lato */
+
             border-bottom: 1px solid rgba(255,255,255,0.1);
+
             transition: background-color 0.3s ease;
+
             font-weight: 700;
+
         }
+
         nav.mobile-nav a:hover {
+
             background-color: #5fae60;
+
         }
+
+
 
         /* Keyframes for mobile menu slide down */
+
         @keyframes slideDown {
+
             from {
+
                 transform: translateY(-20px);
+
                 opacity: 0;
+
             }
+
             to {
+
                 transform: translateY(0);
+
                 opacity: 1;
+
             }
+
         }
+
+
 
         /* Hero Section Styles */
+
         .hero {
+
             background-color: #222;
+
             color: #fff;
+
             padding: 4rem 1rem;
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             justify-content: center;
+
             text-align: center;
+
             position: relative;
+
             overflow: hidden;
+
             background-image: radial-gradient(circle at center, #333, #222);
+
         }
+
+
 
         /* Shimmer effect for hero section */
+
         .hero::before {
+
             content: '';
+
             position: absolute;
+
             top: -50%;
+
             left: -50%;
+
             width: 200%;
+
             height: 200%;
+
             background: linear-gradient(
+
                 60deg,
+
                 rgba(255, 255, 255, 0) 40%,
+
                 rgba(255, 255, 255, 0.1) 50%,
+
                 rgba(255, 255, 255, 0) 60%
+
             );
+
             transform: rotate(-45deg);
+
             animation: shine 6s infinite linear;
+
             pointer-events: none;
+
             mix-blend-mode: overlay;
+
         }
+
+
 
         @keyframes shine {
+
             0% {
+
                 transform: rotate(-45deg) translate(-100%, -100%);
+
             }
+
             100% {
+
                 transform: rotate(-45deg) translate(100%, 100%);
+
             }
+
         }
+
+
 
         .hero h1 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-weight: 700;
+
             font-size: 3.5rem;
+
             line-height: 1.2;
+
             margin-bottom: 1rem;
+
             z-index: 2;
+
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
         }
+
+
 
         .hero-location-text {
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.6rem;
+
             margin-bottom: 1rem;
+
             max-width: 600px;
+
             z-index: 2;
+
         }
+
+
 
         .hero-cta-text {
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.8rem;
+
             margin-top: 1rem;
+
             margin-bottom: 1.5rem;
+
             z-index: 2;
+
             color: #efe2ae;
+
         }
+
+
 
         /* Styles for the postcode input and dropdown */
+
         .postcode-lookup {
+
             position: relative;
+
             margin-top: 1.5rem;
+
             width: 100%;
+
             max-width: 400px;
+
             z-index: 2;
+
         }
+
+
 
         .postcode-input {
+
             width: 100%;
+
             padding: 1.2rem;
+
             font-size: 1.3rem;
+
             border: 2px solid #ddd;
+
             border-radius: 10px;
+
             outline: none;
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             text-align: center;
+
             transition: all 0.3s ease;
+
         }
+
         .postcode-input:focus {
+
             box-shadow: 0 0 0 4px #efe2ae;
+
             border-color: #efe2ae;
+
         }
+
+
 
         .postcode-suggestions {
+
             list-style: none;
+
             padding: 0;
+
             margin: 5px 0 0 0;
+
             background-color: #fff;
+
             border-radius: 10px;
+
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
             position: absolute;
+
             width: 100%;
+
             max-height: 250px;
+
             overflow-y: auto;
+
             z-index: 10;
+
             text-align: left;
+
             color: #222;
+
         }
+
+
 
         .postcode-suggestions li {
+
             padding: 1rem 1.2rem;
+
             cursor: pointer;
+
             font-size: 1.1rem;
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             transition: background-color 0.2s ease, transform 0.1s ease;
+
         }
+
+
 
         .postcode-suggestions li:hover {
+
             background-color: #e0f2f7;
+
             transform: translateX(5px);
+
         }
 
-        /* Book Now Button Style */
-        .book-now-button {
-            background-color: #198754; /* Green color */
-            color: #fff;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-family: 'Lato', sans-serif;
-            text-transform: uppercase;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            font-weight: 700;
-            margin-top: 2rem; /* Space above the button */
-            display: inline-block; /* To allow text-align: center from parent */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
 
-        .book-now-button:hover {
-            background-color: #5fae60; /* Lighter green on hover */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
 
         /* Section styles - general structure for animations */
+
         section {
+
             padding: 4rem 1rem;
+
             transition: all 0.5s ease-out;
+
             opacity: 0;
+
             transform: translateY(20px);
+
         }
+
+
 
         section.fade-in {
+
             opacity: 1;
+
             transform: translateY(0);
+
         }
+
+
 
         /* Rubbish Types Section Styles - NO ANIMATION */
+
         .rubbish-types-section {
+
             background-color: #efe2ae;
+
             padding: 4rem 1rem;
+
             text-align: center;
+
             /* Override general section animation properties */
+
             opacity: 1; /* Always visible */
+
             transform: translateY(0); /* Always in its default position */
+
             transition: none; /* No animation for this section */
+
         }
+
+
 
         .rubbish-types-section h2 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-weight: 700;
+
             font-size: 2.8rem;
+
             color: #000000;
+
             margin-bottom: 3rem;
+
             position: relative;
+
         }
+
+
 
         .rubbish-types-section h2::after {
+
             content: '';
+
             display: block;
+
             width: 80px;
+
             height: 4px;
+
             background-color: #198754;
+
             margin: 10px auto 0;
+
             border-radius: 2px;
+
         }
+
+
 
         .panels-container {
+
             display: flex;
+
             flex-wrap: wrap;
+
             justify-content: center;
+
             gap: 2.5rem;
+
             max-width: 1200px;
+
             margin: 0 auto;
+
         }
+
+
 
         .rubbish-panel {
+
             background-color: #ffffff;
+
             padding: 2.5rem;
+
             border-radius: 15px;
+
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
             flex: 1;
+
             min-width: 280px;
+
             max-width: 380px;
+
             text-align: left;
+
             display: flex;
+
             flex-direction: column;
+
             justify-content: space-between;
+
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+
         }
+
+
 
         .rubbish-panel:hover {
+
             transform: translateY(-8px);
+
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+
         }
+
+
 
         .rubbish-panel h3 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-size: 2rem;
+
             color: #333;
+
             margin-bottom: 1.2rem;
+
             text-align: center;
+
         }
+
         .rubbish-panel img {
+
             width: 100%;
+
             height: 200px;
+
             object-fit: cover;
+
             border-radius: 10px;
+
             margin-bottom: 2rem;
+
         }
+
+
 
         .rubbish-panel p {
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.25rem;
+
             color: #555;
+
             line-height: 1.6;
+
             margin-bottom: 2rem;
+
             flex-grow: 1;
+
             text-align: center;
+
         }
+
+
 
         .panel-button {
+
             background-color: #198754;
+
             color: #fff;
+
             border: none;
+
             padding: 1rem 2.5rem;
+
             font-size: 1.1rem;
+
             font-family: 'Lato', sans-serif; /* Consistent button font: Lato */
+
             text-transform: uppercase;
+
             border-radius: 10px;
+
             cursor: pointer;
+
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
             font-weight: 700;
+
             display: block;
+
             width: fit-content;
+
             margin: 0 auto;
+
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
         }
+
+
 
         .panel-button:hover {
+
             background-color: #5fae60;
+
             transform: translateY(-3px);
+
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
         }
+
+
 
         /* Guide Section Styles */
+
         .guide-section {
+
             background-color: #222;
+
             color: #fff;
+
             padding: 4rem 1rem;
+
             text-align: center;
+
             position: relative;
+
             overflow: hidden;
+
         }
+
+
 
         .guide-section h2 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-weight: 700;
+
             font-size: 2.8rem;
+
             color: #fff;
+
             margin-bottom: 3rem;
+
             position: relative;
+
         }
+
+
 
         .guide-section h2::after {
+
             content: '';
+
             display: block;
+
             width: 80px;
+
             height: 4px;
+
             background-color: #efe2ae;
+
             margin: 10px auto 0;
+
             border-radius: 2px;
+
         }
+
+
 
         .guide-content {
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             max-width: 800px;
+
             margin: 0 auto;
+
             gap: 2.5rem;
+
         }
+
+
 
         .guide-content p {
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.3rem;
+
             line-height: 1.7;
+
             margin-bottom: 1.5rem;
+
         }
+
+
 
         .guide-button {
+
             background-color: #efe2ae;
+
             color: #222;
+
             border: none;
+
             padding: 1.2rem 3rem;
+
             font-size: 1.3rem;
+
             font-family: 'Lato', sans-serif; /* Consistent button font: Lato */
+
             text-transform: uppercase;
+
             border-radius: 10px;
+
             cursor: pointer;
+
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
             font-weight: 700;
+
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
         }
+
+
 
         .guide-button:hover {
+
             background-color: #f7eec8;
+
             transform: translateY(-3px);
+
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
         }
+
+
 
         /* FAQ Section Styles */
+
         .faq-section {
+
             background-color: #ffffff;
+
             padding: 4rem 1rem;
+
             text-align: center;
+
         }
+
+
 
         .faq-section h2 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-weight: 700;
+
             font-size: 2.8rem;
+
             color: #000000;
+
             margin-bottom: 3rem;
+
             position: relative;
+
         }
+
+
 
         .faq-section h2::after {
+
             content: '';
+
             display: block;
+
             width: 80px;
+
             height: 4px;
+
             background-color: #198754;
+
             margin: 10px auto 0;
+
             border-radius: 2px;
+
         }
+
+
 
         .faq-container {
+
             max-width: 900px;
+
             margin: 0 auto;
+
             text-align: left;
+
         }
+
+
 
         .faq-item {
+
             margin-bottom: 1.2rem;
+
             border: 1px solid #ddd;
+
             border-radius: 10px;
+
             overflow: hidden;
+
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
         }
+
+
 
         .faq-question {
+
             background-color: #f0f0f0;
+
             padding: 1.2rem 1.8rem;
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-weight: 700;
+
             font-size: 1.3rem;
+
             cursor: pointer;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             transition: background-color 0.3s ease;
+
             color: #333;
+
         }
+
+
 
         .faq-question:hover {
+
             background-color: #e6e6e6;
+
         }
+
+
 
         .faq-question::after {
+
             content: '+';
+
             font-size: 1.8rem;
+
             transition: transform 0.3s ease;
+
             color: #198754;
+
         }
+
+
 
         .faq-question.active::after {
+
             content: '-';
+
             transform: rotate(180deg);
+
         }
+
+
 
         .faq-answer {
+
             padding: 0 1.8rem;
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.2rem;
+
             background-color: #fff;
+
             border-top: 1px solid #eee;
+
             max-height: 0;
+
             overflow: hidden;
+
             transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+
         }
+
+
 
         .faq-answer.open {
+
             max-height: 200px;
+
             padding-top: 1.2rem;
+
             padding-bottom: 1.2rem;
+
         }
+
+
 
         /* Testimonials Section Styles */
+
         .testimonials-section {
+
             background-color: #f7f7f7;
+
             padding: 4rem 1rem;
+
             text-align: center;
+
         }
+
+
 
         .testimonials-section h2 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-weight: 700;
+
             font-size: 2.8rem;
+
             color: #000000;
+
             margin-bottom: 3rem;
+
             position: relative;
+
         }
+
+
 
         .testimonials-section h2::after {
+
             content: '';
+
             display: block;
+
             width: 80px;
+
             height: 4px;
+
             background-color: #198754;
+
             margin: 10px auto 0;
+
             border-radius: 2px;
+
         }
+
+
 
         .testimonials-container {
+
             display: flex;
+
             flex-wrap: wrap;
+
             justify-content: center;
+
             gap: 2.5rem;
+
             max-width: 1200px;
+
             margin: 0 auto;
+
         }
+
+
 
         .testimonial-card {
+
             background-color: #ffffff;
+
             padding: 2.5rem;
+
             border-radius: 15px;
+
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
             flex: 1;
+
             min-width: 280px;
+
             max-width: 380px;
+
             text-align: left;
+
             display: flex;
+
             flex-direction: column;
+
             justify-content: space-between;
+
             position: relative;
+
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+
         }
+
+
 
         .testimonial-card:hover {
+
             transform: translateY(-8px);
+
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+
         }
+
+
 
         .testimonial-card::before {
+
             content: '“';
+
             font-family: serif;
+
             font-size: 5em;
+
             color: #efe2ae;
+
             position: absolute;
+
             top: 5px;
+
             left: 10px;
+
             line-height: 1;
+
             opacity: 0.7;
+
         }
+
+
 
         .testimonial-text {
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.2rem;
+
             color: #333;
+
             line-height: 1.7;
+
             margin-bottom: 1.8rem;
+
             padding-top: 25px;
+
             font-style: italic;
+
         }
+
+
 
         .testimonial-author {
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.1rem;
+
             color: #198754;
+
             font-weight: 700;
+
             text-align: right;
+
         }
+
+
 
         .stars {
+
             color: gold;
+
             font-size: 1.4rem;
+
             margin-bottom: 0.8rem;
+
             text-align: right;
+
         }
+
+
 
         /* Quote Form Section Styles */
+
         .quote-form-section {
+
             background-color: #198754;
+
             padding: 4rem 1rem;
+
             text-align: center;
+
         }
+
+
 
         .quote-form-section h2 {
+
             font-family: 'Poppins', sans-serif; /* Consistent heading font: Poppins */
+
             font-weight: 700;
+
             font-size: 2.8rem;
+
             color: #ffffff;
+
             margin-bottom: 3rem;
+
             position: relative;
+
         }
+
+
 
         .quote-form-section h2::after {
+
             content: '';
+
             display: block;
+
             width: 80px;
+
             height: 4px;
+
             background-color: #efe2ae;
+
             margin: 10px auto 0;
+
             border-radius: 2px;
+
         }
+
+
 
         .quote-form-panel {
+
             background-color: #ffffff;
+
             padding: 3.5rem 2.5rem;
+
             border-radius: 15px;
+
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+
             max-width: 650px;
+
             margin: 0 auto;
+
             text-align: left;
+
             color: #222;
+
         }
+
+
 
         .quote-form-panel label {
+
             display: block;
+
             margin-bottom: 0.8rem;
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-weight: 700;
+
             font-size: 1.1rem;
+
             color: #444;
+
         }
+
+
 
         .quote-form-panel input[type="text"],
+
         .quote-form-panel input[type="email"],
+
         .quote-form-panel input[type="tel"],
+
         .quote-form-panel textarea,
+
         .quote-form-panel select {
+
             width: 100%;
+
             padding: 1rem;
+
             margin-bottom: 2rem;
+
             border: 1px solid #ccc;
+
             border-radius: 8px;
+
             font-family: 'Lato', sans-serif; /* Consistent font: Lato */
+
             font-size: 1.1rem;
+
             color: #222;
+
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
         }
+
+
 
         .quote-form-panel input[type="text"]:focus,
+
         .quote-form-panel input[type="email"]:focus,
+
         .quote-form-panel input[type="tel"]:focus,
+
         .quote-form-panel textarea:focus,
+
         .quote-form-panel select:focus {
+
             border-color: #198754;
+
             box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.2);
+
             outline: none;
+
         }
+
+
 
         .quote-form-panel textarea {
+
             resize: vertical;
+
             min-height: 120px;
+
         }
+
+
 
         .quote-form-panel button {
+
             background-color: #198754;
+
             color: #fff;
+
             border: none;
+
             padding: 1.2rem 3rem;
+
             font-size: 1.3rem;
+
             font-family: 'Lato', sans-serif; /* Consistent button font: Lato */
+
             text-transform: uppercase;
+
             border-radius: 10px;
+
             cursor: pointer;
+
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
             font-weight: 700;
+
             display: block;
+
             width: fit-content;
+
             margin: 0 auto;
+
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
         }
+
+
 
         .quote-form-panel button:hover {
+
             background-color: #5fae60;
+
             transform: translateY(-3px);
+
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
         }
+
+
 
         /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
+
         @media (max-width: 767px) {
+
             .hamburger-menu {
+
                 display: flex;
+
             }
+
             nav.desktop-nav {
+
                 display: none;
+
             }
+
             header {
+
                 padding: 0.8rem 1.5rem;
+
             }
+
             header.sticky {
+
                 padding: 0.6rem 1.5rem;
+
             }
+
             body.sticky-header-active {
+
                 padding-top: 50px;
+
             }
+
+
 
             .logo {
+
                 font-size: 1.5rem; 
+
             }
+
+
 
             .hero {
+
                 padding: 3rem 1rem;
+
             }
+
+
 
             .hero h1 {
+
                 font-size: 2.4rem;
+
             }
+
+
 
             .hero-location-text {
+
                 font-size: 1.3rem;
+
             }
+
+
 
             .hero-cta-text {
+
                 font-size: 1.3rem;
+
             }
+
+
 
             .postcode-input {
+
                 padding: 0.8rem;
+
                 font-size: 1rem;
+
             }
+
+
 
             .postcode-suggestions li {
+
                 font-size: 0.9rem;
+
                 padding: 0.6rem 0.8rem;
+
             }
 
-            .book-now-button {
-                font-size: 1rem;
-                padding: 0.9rem 2rem;
-            }
+
 
             .rubbish-types-section h2,
+
             .guide-section h2,
+
             .faq-section h2,
+
             .testimonials-section h2,
+
             .quote-form-section h2 {
+
                 font-size: 2.2rem;
+
                 margin-bottom: 2rem;
+
             }
+
+
 
             .rubbish-types-section h2::after,
+
             .guide-section h2::after,
+
             .faq-section h2::after,
+
             .testimonials-section h2::after,
+
             .quote-form-section h2::after {
+
                 width: 60px;
+
                 height: 3px;
+
             }
+
+
 
             .panels-container {
+
                 flex-direction: column;
+
                 align-items: center;
+
             }
+
+
 
             .rubbish-panel {
+
                 padding: 1.8rem;
+
                 min-width: unset;
+
                 max-width: 90%;
+
                 margin-left: auto;
+
                 margin-right: auto;
+
             }
+
+
 
             .rubbish-panel h3 {
+
                 font-size: 1.8rem;
+
             }
+
+
 
             .rubbish-panel p {
+
                 font-size: 1.15rem;
+
             }
+
+
 
             .panel-button {
+
                 font-size: 0.9rem;
+
                 padding: 0.8rem 2rem;
+
             }
+
+
 
             .guide-content p {
+
                 font-size: 1.15rem;
+
             }
+
             .guide-button {
+
                 padding: 0.9rem 2.2rem;
+
                 font-size: 1.1rem;
+
             }
+
+
 
             .faq-question {
+
                 font-size: 1.2rem;
+
                 padding: 1rem 1.2rem;
+
             }
+
+
 
             .faq-answer {
+
                 font-size: 1.1rem;
+
                 padding: 0 1.2rem;
+
             }
+
+
 
             .testimonial-card {
+
                 padding: 2rem;
+
                 min-width: unset;
+
                 max-width: 90%;
+
             }
+
+
 
             .testimonial-text {
+
                 font-size: 1.1rem;
+
             }
+
+
 
             .testimonial-author {
+
                 font-size: 1.1rem;
+
             }
+
+
 
             .quote-form-panel {
+
                 padding: 2.5rem 1.8rem;
+
                 max-width: 90%;
+
             }
+
+
 
             .quote-form-panel label {
-                font-size: 1.0rem;
+
+                font-size: 1rem;
+
             }
+
+
 
             .quote-form-panel input[type="text"],
+
             .quote-form-panel input[type="email"],
+
             .quote-form-panel input[type="tel"],
+
             .quote-form-panel textarea,
+
             .quote-form-panel select {
+
                 padding: 0.8rem;
+
                 font-size: 1rem;
+
                 margin-bottom: 1.5rem;
+
             }
+
+
 
             .quote-form-panel button {
+
                 padding: 0.9rem 2.2rem;
+
                 font-size: 1.1rem;
+
             }
+
         }
+
     </style>
+
 </head>
+
 <body>
+
     <header id="mainHeader">
+
         <a href="index.html" class="logo">
+
             <span>NK</span> JUNK REMOVALS
+
         </a>
+
         <div class="hamburger-menu" onclick="toggleMobileMenu()">
+
             <div class="bar"></div>
+
             <div class="bar"></div>
+
             <div class="bar"></div>
+
         </div>
+
         <nav class="desktop-nav">
+
             <a href="contact.html">Contact</a>
+
         </nav>
+
         <nav class="mobile-nav" id="mobileNav">
+
             <a href="contact.html">Contact</a>
+
         </nav>
+
     </header>
 
+
+
     <section class="hero">
+
         <h1>LOOKING FOR NO FUSS WASTE REMOVAL?</h1>
+
         <p class="hero-location-text">We service all of Melbourne!</p>
+
         <p class="hero-cta-text"><b>Enter your postcode to check availability</b> 👇</p>
+
         <div class="postcode-lookup">
+
             <input type="text" id="postcodeInput" class="postcode-input" placeholder="Enter Postcode">
+
             <ul id="postcodeSuggestions" class="postcode-suggestions"></ul>
+
         </div>
-        <button class="book-now-button" onclick="window.location.href='contact.html'">BOOK NOW</button>
+
     </section>
+
+
 
     <section class="rubbish-types-section">
+
         <h2>WHAT TYPE OF RUBBISH DO YOU HAVE?</h2>
+
         <div class="panels-container">
+
             <div class="rubbish-panel">
+
                 <img src="https://github.com/mmp03patane/JUNK/blob/main/contractor-clean-up-portland.jpg?raw=true" alt="General Waste">
+
                 <h3>General Waste</h3>
+
                 <p>This includes common household and office waste, such as packaging, old furniture, and general junk. We ensure responsible disposal, sorting recyclables and non-recyclables.</p>
+
                 <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
+
             </div>
+
             <div class="rubbish-panel">
+
                 <img src="https://github.com/mmp03patane/JUNK/blob/main/green-waste-removal.jpg?raw=true" alt="Green Waste">
+
                 <h3>Green Waste</h3>
+
                 <p>Perfect for garden clear-outs! This covers organic materials like branches, leaves, grass clippings, and small stumps. All green waste is taken to a composting facility.</p>
+
                 <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
+
             </div>
+
             <div class="rubbish-panel">
+
                 <img src="https://github.com/mmp03patane/JUNK/blob/main/construction%20waste.jpg?raw=true" alt="Construction & Demolition Waste">
+
                 <h3>Construction & Demolition</h3>
+
                 <p>From renovation debris to building site waste, we handle concrete, bricks, timber, metals, and more. Our team is equipped for heavy lifting and efficient site clearance.</p>
+
                 <button class="panel-button" onclick="window.location.href='contact.html'">GET QUOTE</button>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="guide-section">
+
         <h2>DOWNLOAD OUR FREE JUNK REMOVAL GUIDE</h2>
+
         <div class="guide-content">
+
             <p>Looking for tips on decluttering your home or preparing for a big clean-out? Download our comprehensive guide to efficient and eco-friendly junk removal. It's packed with useful advice and insider tips to make your life easier!</p>
+
             <button class="guide-button" onclick="alert('Guide Download Initiated!');">DOWNLOAD GUIDE NOW</button>
+
         </div>
+
     </section>
+
+
 
     <section class="faq-section">
+
         <h2>FREQUENTLY ASKED QUESTIONS</h2>
+
         <div class="faq-container">
+
             <div class="faq-item">
+
                 <div class="faq-question">What areas do you service?</div>
+
                 <div class="faq-answer">We proudly service all metro Melbourne areas. If you're unsure, please contact us with your location, and we'll confirm.</div>
+
             </div>
+
             <div class="faq-item">
+
                 <div class="faq-question">How do I get a free quote?</div>
+
                 <div class="faq-answer">You can get a free, no-obligation quote by filling out our online form below, or by giving us a call. We'll ask a few questions about the type and volume of rubbish to provide an accurate estimate.</div>
+
             </div>
+
             <div class="faq-item">
+
                 <div class="faq-question">What types of rubbish can you remove?</div>
+
                 <div class="faq-answer">We remove general waste, green waste, and construction & demolition debris. For specific items or hazardous materials, please contact us directly to discuss.</div>
+
             </div>
+
             <div class="faq-item">
+
                 <div class="faq-question">How quickly can you remove my rubbish?</div>
+
                 <div class="faq-answer">We aim for fast and efficient service. Depending on our schedule and your location, we can often arrange same-day or next-day rubbish removal.</div>
+
             </div>
+
             <div class="faq-item">
+
                 <div class="faq-question">Do I need to be present during the rubbish removal?</div>
+
                 <div class="faq-answer">While it's not strictly necessary, it's often helpful if you're present to guide our team, especially for specific items or access instructions. If you can't be there, clear instructions beforehand are appreciated.</div>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="testimonials-section">
+
         <h2>WHAT OUR CUSTOMERS SAY</h2>
+
         <div class="testimonials-container">
+
             <div class="testimonial-card">
+
                 <div class="stars">⭐⭐⭐⭐⭐</div>
+
                 <p class="testimonial-text">"Absolutely brilliant service! They were quick, professional, and left the area spotless. Highly recommend for any junk removal needs in Melbourne."</p>
+
                 <p class="testimonial-author">- Sarah L.</p>
+
             </div>
+
             <div class="testimonial-card">
+
                 <div class="stars">⭐⭐⭐⭐⭐</div>
+
                 <p class="testimonial-text">"Needed urgent green waste removal after a storm, and these guys delivered! Friendly, efficient, and great value. Couldn't be happier."</p>
+
                 <p class="testimonial-author">- David R.</p>
+
             </div>
+
             <div class="testimonial-card">
+
                 <div class="stars">⭐⭐⭐⭐⭐</div>
+
                 <p class="testimonial-text">"Seamless experience from quote to collection. They handled all the construction debris from our reno with ease. Professional and reliable."</p>
+
                 <p class="testimonial-author">- Emily P.</p>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="quote-form-section">
+
         <h2>GET YOUR FREE QUOTE TODAY</h2>
+
         <div class="quote-form-panel">
+
             <form action="#" method="POST">
+
                 <label for="name">Name:</label>
+
                 <input type="text" id="name" name="name" required>
 
+
+
                 <label for="email">Email:</label>
+
                 <input type="email" id="email" name="email" required>
 
+
+
                 <label for="phone">Phone:</label>
+
                 <input type="tel" id="phone" name="phone">
 
+
+
                 <label for="rubbish-type">Type of Rubbish:</label>
+
                 <select id="rubbish-type" name="rubbish_type" required>
+
                     <option value="">-- Please select --</option>
+
                     <option value="general">General Waste</option>
+
                     <option value="green">Green Waste</option>
+
                     <option value="construction">Construction & Demolition</option>
+
                     <option value="other">Other (please specify below)</option>
+
                 </select>
 
+
+
                 <label for="message">Details of Rubbish / Message:</label>
+
                 <textarea id="message" name="message" rows="5" required></textarea>
 
+
+
                 <button type="submit">GET MY FREE QUOTE</button>
+
             </form>
+
         </div>
+
     </section>
 
+
+
     <script>
+
         function toggleMobileMenu() {
+
             document.getElementById("mobileNav").classList.toggle("open");
+
             document.querySelector(".hamburger-menu").classList.toggle("active");
+
         }
 
+
+
         // FAQ Toggle Functionality
+
         document.addEventListener('DOMContentLoaded', () => {
+
             const faqQuestions = document.querySelectorAll('.faq-question');
 
+
+
             faqQuestions.forEach(question => {
+
                 question.addEventListener('click', () => {
+
                     const answer = question.nextElementSibling;
+
                     question.classList.toggle('active');
 
+
+
                     if (answer.classList.contains('open')) {
+
                         answer.classList.remove('open');
+
                         answer.style.maxHeight = null;
+
                     } else {
+
                         answer.style.maxHeight = answer.scrollHeight + "px";
+
                         answer.classList.add('open');
+
                     }
+
                 });
+
             });
+
+
 
             // Postcode Lookup Functionality (unchanged as requested)
+
             const postcodeInput = document.getElementById('postcodeInput');
+
             const postcodeSuggestions = document.getElementById('postcodeSuggestions');
+
             const postcodeLookupDiv = document.querySelector('.postcode-lookup');
 
+
+
             const serviceAreas = [
+
                 "Abbotsford 3067", "Aberfeldie 3040", "Airport West 3042", "Albert Park 3206",
+
                 "Alphington 3078", "Armadale 3143", "Ascot Vale 3032", "Ashburton 3147",
+
                 "Ashwood 3147", "Aspendale 3195", "Aspendale Gardens 3195", "Attwood 3049",
+
                 "Auburn 3123",
+
                 "Avondale Heights 3034", "Balaclava 3183", "Balwyn 3103",
+
                 "Balwyn North 3104", "Bayswater 3153", "Bayswater North 3153", "Beaumaris 3193",
+
                 "Bentleigh 3204", "Bentleigh East 3165", "Berwick 3806", "Blackburn 3130",
+
                 "Blackburn North 3130", "Blackburn South 3130", "Box Hill 3128", "Box Hill North 3129",
+
                 "Box Hill South 3128", "Braybrook 3019", "Brighton 3186", "Brighton East 3187",
+
                 "Broadmeadows 3047", "Brunswick 3056", "Brunswick East 3057", "Brunswick West 3055",
+
                 "Bundoora 3083", "Burwood 3125", "Burwood East 3151", "Camberwell 3124",
+
                 "Canterbury 3126", "Carlton 3053", "Carlton North 3054", "Carnegie 3163",
+
                 "Carrum 3197", "Carrum Downs 3201", "Caulfield 3162", "Caulfield North 3161",
+
                 "Caulfield South 3162", "Chadstone 3148", "Cheltenham 3192", "Chelsea 3196",
+
                 "Chelsea Heights 3196", "Cheltenham East 3192", "Chirnside Park 3116", "Clarinda 3169",
+
                 "Clayton 3168", "Clayton South 3169", "Clifton Hill 3068", "Coburg 3058",
+
                 "Coburg North 3058", "Collingwood 3066", "Craigieburn 3064", "Cranbourne 3977",
+
                 "Cranbourne East 3977", "Cranbourne North 3977", "Cranbourne South 3977", "Cranbourne West 3977",
+
                 "Croydon 3136", "Croydon Hills 3136", "Croydon North 3136", "Croydon South 3136",
+
                 "Dandenong 3175", "Dandenong North 3175", "Dandenong South 3175", "Deer Park 3023",
+
                 "Delahey 3037", "Derrimut 3026", "Diamond Creek 3089", "Doncaster 3108",
+
                 "Doncaster East 3109", "Donvale 3111", "Doreen 3754", "Elsternwick 3185",
+
                 "Eltham 3095", "Elwood 3184", "Endeavour Hills 3802", "Epping 3076",
+
                 "Essendon 3040", "Essendon North 3041", "Essendon West 3040", "Fairfield 3078",
+
                 "Ferntree Gully 3156", "Fitzroy 3065", "Fitzroy North 3068", "Footscray 3011",
+
                 "Forest Hill 3131", "Frankston 3199", "Frankston North 3200", "Frankston South 3199",
+
                 "Glen Huntly 3163", "Glen Iris 3146", "Glen Waverley 3150", "Greensborough 3088",
+
                 "Hallam 3803", "Hampton 3188", "Hampton East 3188", "Hawthorn 3122",
+
                 "Hawthorn East 3123", "Heidelberg 3084", "Heidelberg Heights 3081", "Heidelberg West 3081",
+
                 "Highett 3190", "Hoppers Crossing 3029", "Hughesdale 3166", "Huntingdale 3166",
+
                 "Ivanhoe 3079", "Ivanhoe East 3079", "Jacana 3047", "Keilor 3036",
+
                 "Keilor Downs 3038", "Keilor East 3033", "Keilor Lodge 3038", "Keilor North 3036",
+
                 "Keilor Park 3042", "Kensington 3031", "Kew 3101", "Kew East 3102",
+
                 "Keysborough 3173", "Kilsyth 3137", "Kilsyth South 3137", "Kingsbury 3083",
+
                 "Kingsville 3012", "Knoxfield 3180", "Kooyong 3144", "Lalor 3075",
+
                 "Langwarrin 3910", "Laverton 3028", "Lilydale 3140", "Lower Plenty 3093",
+
                 "Lynbrook 3975", "Lyndhurst 3975", "Lysterfield 3156", "Macleod 3085",
+
                 "Maidstone 3012", "Malvern 3144", "Malvern East 3145", "Maribyrnong 3032",
+
                 "McKinnon 3204", "Meadow Heights 3048", "Melbourne 3000", "Melbourne Airport 3045",
+
                 "Mentone 3194", "Mernda 3754", "Middle Park 3206", "Mill Park 3082",
+
                 "Mitcham 3132", "Mont Albert 3127", "Montmorency 3094", "Moonee Ponds 3039",
+
                 "Moorabbin 3189", "Mooroolbark 3138", "Mordialloc 3195", "Mount Eliza 3930",
+
                 "Mount Evelyn 3796", "Mount Waverley 3149", "Mulgrave 3170", "Murrumbeena 3163",
+
                 "Narre Warren 3805", "Narre Warren North 3804", "Narre Warren South 3805", "Newport 3015",
+
                 "Niddrie 3042", "Noble Park 3174", "Noble Park North 3174", "North Melbourne 3051",
+
                 "Northcote 3070", "Notting Hill 3168", "Nunawading 3131", "Oak Park 3046",
+
                 "Oakleigh 3166", "Oakleigh East 3166", "Oakleigh South 3167", "Ormond 3204",
+
                 "Pakenham 3810", "Parkdale 3195", "Parkville 3052", "Pascoe Vale 3044",
+
                 "Pascoe Vale South 3044", "Patterson Lakes 3197", "Point Cook 3030", "Port Melbourne 3207",
+
                 "Prahran 3181", "Preston 3072", "Reservoir 3073", "Richmond 3121",
+
                 "Ringwood 3134", "Ringwood East 3135", "Ringwood North 3134", "Ripponlea 3185",
+
                 "Rosanna 3084", "Rowville 3178", "Roxburgh Park 3064", "Sandringham 3191",
+
                 "Scoresby 3179", "Seaford 3198", "Seddon 3011", "Selby 3159",
+
                 "South Kingsville 3015", "South Melbourne 3205", "South Morang 3752", "South Yarra 3141",
+
                 "Southbank 3006", "Spotswood 3015", "Springvale 3171", "Springvale South 3172"
+
             ];
 
+
+
             const redirectToContact = () => {
+
                 window.location.href = "contact.html";
+
             };
 
+
+
             postcodeInput.addEventListener('input', function() {
+
                 const query = this.value.toLowerCase();
+
                 postcodeSuggestions.innerHTML = '';
 
+
+
                 if (query.length === 0) {
+
                     return;
+
                 }
+
+
 
                 const filteredAreas = serviceAreas.filter(area =>
+
                     area.toLowerCase().includes(query)
+
                 );
 
+
+
                 filteredAreas.forEach(area => {
+
                     const li = document.createElement('li');
+
                     li.textContent = area;
+
                     li.addEventListener('click', function() {
+
                         postcodeInput.value = this.textContent;
+
                         postcodeSuggestions.innerHTML = '';
+
                         redirectToContact();
+
                     });
+
                     postcodeSuggestions.appendChild(li);
+
                 });
+
             });
+
+
 
             document.addEventListener('click', function(event) {
+
                 if (!postcodeLookupDiv.contains(event.target)) {
+
                     postcodeSuggestions.innerHTML = '';
+
                 }
+
             });
+
+
 
             postcodeInput.addEventListener('blur', function() {
+
                 const inputValue = this.value.trim();
+
                 const isValid = serviceAreas.some(area => area.toLowerCase() === inputValue.toLowerCase());
+
                 if (isValid) {
+
                     redirectToContact();
+
                 }
+
             });
+
+
 
             postcodeInput.addEventListener('keypress', function(event) {
+
                 if (event.key === 'Enter') {
+
                     const inputValue = this.value.trim();
+
                     const isValid = serviceAreas.some(area => area.toLowerCase() === inputValue.toLowerCase());
+
                     if (isValid) {
+
                         redirectToContact();
+
                     }
+
                 }
+
             });
+
         });
+
+
 
         // Intersection Observer for fade-in animations
+
         const sections = document.querySelectorAll('section');
 
+
+
         const observerOptions = {
+
             root: null,
+
             rootMargin: '0px',
+
             threshold: 0.1
+
         };
 
+
+
         const observer = new IntersectionObserver((entries, observer) => {
+
             entries.forEach(entry => {
+
                 // Only apply fade-in to sections that are NOT 'rubbish-types-section'
+
                 if (entry.isIntersecting && !entry.target.classList.contains('rubbish-types-section')) {
+
                     entry.target.classList.add('fade-in');
+
                     observer.unobserve(entry.target);
+
                 }
+
             });
+
         }, observerOptions);
 
+
+
         sections.forEach(section => {
+
             // Only observe sections that are NOT 'rubbish-types-section'
+
             if (!section.classList.contains('rubbish-types-section')) {
+
                 observer.observe(section);
+
             }
+
         });
+
+
 
         // Semi-sticky header functionality
+
         window.addEventListener('scroll', () => {
+
             const header = document.getElementById('mainHeader');
+
             const stickyOffset = 50;
 
+
+
             if (window.scrollY > stickyOffset) {
+
                 header.classList.add('sticky');
+
                 document.body.classList.add('sticky-header-active');
+
             } else {
+
                 header.classList.remove('sticky');
+
                 document.body.classList.remove('sticky-header-active');
+
             }
+
         });
+
     </script>
+
 </body>
+
 </html>
